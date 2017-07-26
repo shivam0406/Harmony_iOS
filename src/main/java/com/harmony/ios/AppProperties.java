@@ -17,8 +17,8 @@ public class AppProperties {
 	private String appName;
 	private String platformName;
 	private String platformVersion;
-	private String appPackage;
-	private String appActivity;
+	private String appID;
+	private String appPassword;
 	private String udid ;
 	private String screenMode;
 	private String appDir;
@@ -74,20 +74,20 @@ public class AppProperties {
 		this.platformVersion = platformVersion;
 	}
 
-	public String getAppPackage() {
-		return appPackage;
+	public String getID() {
+		return appID;
 	}
 
-	public void setAppPackage(String appPackage) {
-		this.appPackage = appPackage;
+	public void setID(String ID) {
+		this.appID = ID;
 	}
 
-	public String getAppActivity() {
-		return appActivity;
+	public String getPassword() {
+		return appPassword;
 	}
 
-	public void setAppActivity(String appActivity) {
-		this.appActivity = appActivity;
+	public void setPassword(String password) {
+		this.appPassword = password;
 	}
 
 	public boolean showIOSLog() {
@@ -131,7 +131,6 @@ public class AppProperties {
 			setUdid(prop.getProperty("udid"));
 			setPlatformVersion(prop.getProperty("platformVersion"));
 			setDeviceName(prop.getProperty("deviceName"));
-
 		}
 		else
 		{
@@ -149,6 +148,14 @@ public class AppProperties {
 
 		setPlatformVersion(prop.getProperty("platformVersion"));
 		setDeviceName(prop.getProperty("deviceName"));
+	}
+
+	public void loadCredentilsProperties(String propertyFileName) throws IOException {
+		Properties properties = ReadPropertyFile.readPropertiesFile(PROPERTY_FILE_PATH + propertyFileName);
+		setID(properties.getProperty("ID"));
+		setPassword(properties.getProperty("Password"));
+
+
 	}
 }
 
