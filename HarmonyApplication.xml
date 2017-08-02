@@ -8,18 +8,18 @@
             <class name="com.harmony.ios.Launch.End2EndTest">
                 <methods>
                     <include name="Login"/>
-                    <include name="Create_Conflict"/>
-                    <include name="enterMyProblem"/>
-                    <include name="enterMyConflict"/>
-                    <include name="enterMyResolutionOption1"/>
-                    <include name="enterMyResolutionOption2"/>
-                    <include name="enterMyResolutionOption3"/>
-                    <include name="enterMyResolutionOption4"/>
-                    <include name="chooseResolution"/>
-                    <include name="Planning"/>
-                    <include name="Experiment"/>
+                    <!--<include name="Create_Conflict"/>-->
+                    <!--<include name="enterMyProblem"/>-->
+                    <!--<include name="enterMyConflict"/>-->
+                    <!--<include name="enterMyResolutionOption1"/>-->
+                    <!--<include name="enterMyResolutionOption2"/>-->
+                    <!--<include name="enterMyResolutionOption3"/>-->
+                    <!--<include name="enterMyResolutionOption4"/>-->
+                    <!--<include name="chooseResolution"/>-->
+                    <!--<include name="Planning"/>-->
+                    <!--<include name="Experiment"/>-->
                     <!--<include name="StoryVerify"/>-->
-                    <include name="shareConflict"/>
+                    <!--<include name="shareConflict"/>-->
                 </methods>
             </class>
         </classes>
