@@ -10,7 +10,7 @@ import java.net.URL;
 
 public class WebDriverFactory {
 
-	public static final ThreadLocal<IOSDriver> webdriver = new ThreadLocal<IOSDriver>();
+	public static ThreadLocal<IOSDriver> webdriver = new ThreadLocal<IOSDriver>();
 
 	public static IOSDriver getIOSDriver() {
 		if (webdriver.get() == null)
