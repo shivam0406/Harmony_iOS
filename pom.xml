@@ -7,7 +7,6 @@
     <groupId>iOS.Harmony.Automation</groupId>
     <artifactId>iOS.Harmony.Automation</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <packaging>jar</packaging>
     <name>selenium-tests</name>
     <url>http://maven.apache.org</url>
@@ -23,7 +22,7 @@
         <allure.version>2.5</allure.version>
 
     </properties>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
@@ -110,7 +109,6 @@
     <build>
         <plugins>
             <plugin>
-
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven.compiler.version}</version>
@@ -127,11 +125,16 @@
                 <version>${surefire.version}</version>
 
                 <configuration>
+                    <testFailureIgnore>false</testFailureIgnore>
+                    <argLine>
+                        -javaagent:/org/aspectj/aspectjweaver//aspectjweaver-.jar
+                    </argLine>
                     <!-- This is to skip tests during normal maven execution
                     (e.g. mvn package) and run them in integration-test -->
                     <!-- testng xml suite file to be used for test execution -->
                     <suiteXmlFiles>
-                        <suitexmlfile>${suiteXmlFile}</suitexmlfile>
+                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                        <!--<suitexmlfile>${suiteXmlFile}</suitexmlfile>-->
                     </suiteXmlFiles>
                     <reportsDirectory>${project.basedir}/target</reportsDirectory>
                     <!--   <testFailureIgnore>true</testFailureIgnore>-->
@@ -147,7 +150,48 @@
                         </configuration>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.5.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>zip-with-dependencies</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <descriptors>
+                                <descriptor>src/main/assembly/zip.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
@@ -184,7 +228,7 @@
                     <dependency>
                         <groupId>org.aspectj</groupId>
                         <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
+                        <version>1.5.4</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -200,6 +244,24 @@
                     <stopKey>stop</stopKey>
                     <stopPort>1234</stopPort>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.10</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/dependency-jars/</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
         </plugins>
