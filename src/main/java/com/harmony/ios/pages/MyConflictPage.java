@@ -9,17 +9,22 @@ public class MyConflictPage extends BasePage {
 
 	final static Logger logger = Logger.getLogger(MyConflictPage.class);
 
-	private static final By SOLUTION_BOX = MobileBy.AccessibilityId("What CHANGE do YOU feel pressure to make to solve / deal with your problem?");
-	private static final By ALTERNATIVE_BOX = MobileBy.AccessibilityId("What is the conflicting STATUS QUO or ALTERNATIVE?");
-	private static final By UNIQUE_PROS = MobileBy.AccessibilityId("What are the unique PROS of CHANGE for you / your part?");
-	private static final By UNIQUE_CONS = MobileBy.AccessibilityId("What are the unique CONS of CHANGE for you/your part?");
-	private static final By ALTERNATIVE_PROS = MobileBy.AccessibilityId("What are the Unique PROS of NOT CHANGE or ALTERNATIVE for you / your part?");
-	private static final By ALTERNATIVE_CONS = MobileBy.AccessibilityId("What are the unique CONS of NOT CHANGE or the ALTERNATIVE for you / your part?");
-	private static final By MY_GOAL = MobileBy.AccessibilityId("What is \"YOUR\" Goal – the thing(s) you desire most?");
-	private static final By MY_THREAT = MobileBy.AccessibilityId("What is YOUR THREAT – the thing(s) you FEAR most?");
-	private static final By STEP_2A_PAGE = MobileBy.AccessibilityId("Step 2a MyConflict");
+	private static final By SOLUTION_BOX = MobileBy.AccessibilityId("What ACTION will solve your problem?");
+	private static final By ALTERNATIVE_BOX = MobileBy.AccessibilityId("What is the conflicting STATUS QUO (Current way) or OTHER Change?");
+	private static final By MY_GOAL = MobileBy.AccessibilityId("What is YOUR GOAL that you desire most?");
+	private static final By MY_THREAT = MobileBy.AccessibilityId("What is the THREAT to YOUR GOAL that you fear most?");
+	private static final By STEP_2A_PAGE = MobileBy.AccessibilityId("Step 2a MyDecision");
 	private static final By BLAME_ALERT = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]");
 	private static final By NO = MobileBy.AccessibilityId("No");
+	private static final By YES = MobileBy.AccessibilityId("Yes");
+	private static final By SOMEONE_ELSE = MobileBy.AccessibilityId("Someone else");
+	private static final By MYSELF = MobileBy.AccessibilityId("I blame Myself");
+	private static final By BLAME_NAME_BOX = MobileBy.xpath("//XCUIElementTypeApplication[@name=\"HDM\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther");
+	private static final By BLAME_BOX_TEXT_EDIT = MobileBy.xpath("//XCUIElementTypeApplication[@name=\"HDM\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField");
+	private static final By UNIQUE_PROS = MobileBy.AccessibilityId("What are the unique PROS of the CHANGE?");
+	private static final By UNIQUE_CONS = MobileBy.AccessibilityId("What are the unique CONS of CHANGE?");
+	private static final By ALTERNATIVE_PROS = MobileBy.AccessibilityId("What are the unique PROS of NOT CHANGE?");
+	private static final By ALTERNATIVE_CONS = MobileBy.AccessibilityId("What are the unique CONS of NOT CHANGE/OTHER?");
 
 	public MyConflictPage() {
 		assertCurrentPage(STEP_2A_PAGE);
@@ -99,6 +104,34 @@ public class MyConflictPage extends BasePage {
 	public MyConflictPage clickNoForBlame(){
 		logger.info("Click on No for Blame");
 		clickElement(NO);
+		return this;
+	}
+
+	public MyConflictPage clickYesForBlame(){
+		logger.info("Click on Yes for Blame");
+		clickElement(YES);
+		return this;
+	}
+
+	public MyConflictPage selectSomeOneElseForBlame() {
+		logger.info("It's cause of someone else");
+		waitForPresence(SOMEONE_ELSE);
+		clickElement(SOMEONE_ELSE);
+		return this;
+	}
+
+	public MyConflictPage selectMySelfForBlame() {
+		logger.info("It's cause of myself");
+		waitForPresence(MYSELF);
+		clickElement(MYSELF);
+		return this;
+	}
+
+	public MyConflictPage enterSomeOneName() throws InterruptedException {
+		logger.info("Lets verify the Blame pop-up box and enter the name");
+		waitForPresence(BLAME_NAME_BOX);
+		String myValues = TestUtils.randomValues();
+		enterValueinBoxes(BLAME_BOX_TEXT_EDIT, myValues, "Someone else") ;
 		return this;
 	}
 }

@@ -2,6 +2,7 @@ package com.harmony.ios.utils;
 
 import com.harmony.ios.AppProperties;
 import io.appium.java_client.ios.IOSDriver;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
@@ -35,10 +36,12 @@ public class WebDriverFactory {
 		capabilities.setCapability("platformVersion", appProperties.getPlatformVersion());
 		capabilities.setCapability("deviceName", appProperties.getDeviceName());
 		capabilities.setCapability("app", app.getAbsolutePath());
-		capabilities.setCapability("udid", appProperties.getUdid());
+		capabilities.setCapability("udid", "0b57a80f9855da5257db94bbdcef2e6e8b1e6ea3");
 		capabilities.setCapability("platformName", appProperties.getPlatformName());
 		capabilities.setCapability("showIOSLog", appProperties.showIOSLog());
 		capabilities.setCapability("automationName", appProperties.getAutomationName());
+//		capabilities.setCapability("noReset", true);
+//		capabilities.setCapability("fullReset", false);
 		capabilities.setCapability("newCommandTimeout", appProperties.getNewCommandTimeOut());
 
 		IOSDriver driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);

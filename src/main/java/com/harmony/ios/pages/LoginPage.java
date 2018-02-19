@@ -12,10 +12,10 @@ public class LoginPage extends BasePage {
 	final static Logger logger = Logger.getLogger(LoginPage.class);
 
 	private static final By SIGN_IN = MobileBy.AccessibilityId("SIGN IN");
-	private static final By EMAIL_IMAGE = MobileBy.AccessibilityId("iconUser");
+	//private static final By EMAIL_IMAGE = MobileBy.AccessibilityId("iconUser");
 	private static final By EMAIL = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTextField[1]");
-	private static final By PASSWORD = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeSecureTextField[1]");
-	private static final By LOGIN = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]");
+	private static final By PASSWORD = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeSecureTextField[1]");
+	//private static final By LOGIN = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]");
 
 	AppProperties properties = null;
 
@@ -29,7 +29,7 @@ public class LoginPage extends BasePage {
 	}
 
 	public LoginPage LoginPage() {
-		assertCurrentPage(EMAIL_IMAGE);
+		assertCurrentPage(SIGN_IN);
 		return this;
 	}
 
@@ -47,7 +47,7 @@ public class LoginPage extends BasePage {
 	}
 
 	public LoginPage clickSignin(){
-		clickElement(LOGIN);
+		clickElement(SIGN_IN);
 		logger.info("Clicked on SignIN Button");
 		return this;
 	}

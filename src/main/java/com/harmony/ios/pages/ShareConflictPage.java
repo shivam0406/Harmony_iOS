@@ -14,8 +14,15 @@ public class ShareConflictPage extends BasePage {
 	private static final By SHARE_PUBLIC = MobileBy.AccessibilityId("Share Publicly");
 	private static final By SHARED_ALERT_BOX = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeAlert[1]/XCUIElementTypeOther[1]");
 	private static final By OK = MobileBy.AccessibilityId("OK");
+	private static final By SHARE_BUTTON = MobileBy.AccessibilityId("Share");
+	private static final By PLUS = MobileBy.AccessibilityId("plus");
+	private static final By BACK = MobileBy.AccessibilityId("Back");
+	private static final By USER_DETAILS = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTextField[1]");
+	private static final By CAN_EDIT_RADIO = MobileBy.AccessibilityId("radio no");
+	private static final By USER_DETAILS_STATIC_TEXT = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[1]/XCUIElementTypeStaticText[1]");
+	private static final By ICON_DELETE_BLACK = MobileBy.AccessibilityId("icon delete black");
 	private static final By UNLOCK = MobileBy.AccessibilityId("icon unlock black");
-	private static final By CONFLICT_LIBRARY = MobileBy.AccessibilityId("Conflicts Library");
+	private static final By CONFLICT_LIBRARY = MobileBy.AccessibilityId("Community Library");
 	private static final By CONFLICT_NAME = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeTable[1]/XCUIElementTypeCell[1]/XCUIElementTypeStaticText[1]");
 	String ConflictName = null;
 
@@ -40,6 +47,46 @@ public class ShareConflictPage extends BasePage {
 		logger.info("Let's share the conflict publicly");
 		clickElement(SHARE_PUBLIC);
 		syncAction(2000);
+		return this;
+	}
+
+	public ShareConflictPage sharePrivately() throws InterruptedException {
+		logger.info("Let's share the conflict privately");
+		clickElement(SHARE_PRIVATE);
+		syncAction(2000);
+		return this;
+	}
+
+	public ShareConflictPage addUserDetails() throws InterruptedException {
+		logger.info("Let's share the conflict with someone");
+		waitForPresence(SHARE_BUTTON);
+		enterValueinBoxesWithoutDone(USER_DETAILS, "shivam.gupta@forgeahead.io", "user email id");
+		clickElement(PLUS);
+		return this;
+	}
+
+	public ShareConflictPage clickOnShare() {
+		logger.info("all checkes done now share it");
+		clickElement(SHARE_BUTTON);
+		return this;
+	}
+
+	public ShareConflictPage checkAddedUserDetails () {
+		logger.info("Let's verify the added user details");
+		matchText(USER_DETAILS_STATIC_TEXT, "Details matched", "user email id");
+		return this;
+	}
+
+	public ShareConflictPage giveEditAccess() {
+		logger.info("providing edit access of conflict");
+		waitAndClickElement(CAN_EDIT_RADIO, 3);
+		assertCurrentPage(ICON_DELETE_BLACK);
+		return this;
+	}
+
+	public ShareConflictPage moveToHomeScreen() {
+		logger.info("Conflict share privately now go to home");
+		clickElement(BACK);
 		return this;
 	}
 
@@ -78,6 +125,12 @@ public class ShareConflictPage extends BasePage {
 		syncAction(5000);
 		String s = getText(CONFLICT_NAME);
 		Assert.assertEquals(ConflictName, s, "Both String has matched");
+		return this;
+	}
+
+	public ShareConflictPage moveMyDecisionPage() {
+		logger.info("Shared conflict has been verified now move back to home page");
+		waitAndClickElement(MOVE_TO_CONFLICT, 3);
 		return this;
 	}
 

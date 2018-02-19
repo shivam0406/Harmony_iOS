@@ -11,6 +11,7 @@ public class ResolutionPage extends BasePage {
 	final static Logger logger = Logger.getLogger(ResolutionPage.class);
 
 	private static final By STEP_3_A_PAGE = MobileBy.AccessibilityId("Step 3a Resolution");
+	private static final By STEP_3_B_PAGE = MobileBy.AccessibilityId("Step 3b Resolution");
 	private static final By MY_GOAL_BOX_VALUE = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeTextView[1]");
 	private static final By UNIQUE_PRO_BOX_VALUE = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeOther[1]/XCUIElementTypeTextView[1]");
 	private static final By ALTERNATIVE_PRO_BOX_VALUE = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeOther[2]/XCUIElementTypeTextView[1]");
@@ -25,16 +26,28 @@ public class ResolutionPage extends BasePage {
 	private static final By OPTION_3 = MobileBy.AccessibilityId("Option 3 : WHEN + WHEN NOT");
 	private static final By OPTION_4 = MobileBy.AccessibilityId("Option 4 : ANOTHER CHANGE");
 	private static final By STILL_STUCK = MobileBy.AccessibilityId("Still Stuck?");
+	private static final By SIMPLE_RESOLUTION_TEXT = MobileBy.AccessibilityId("SIMPLE RESOLUTIONS");
+	private static final By CHANGE_PLUS_PLUS =  MobileBy.AccessibilityId("CHANGE ++");
+	private static final By NOT_CHANGE_PLUS_PLUS =  MobileBy.AccessibilityId("NOT CHANGE ++");
+	private static final By PLUS_CONDITION_FOR_CHANGE = MobileBy.AccessibilityId("+ Conditions for CHANGE?");
+	private static final By PLUS_CONDITION_FOR_NOT_CHANGE = MobileBy.AccessibilityId("+ Conditions for NOT CHANGE/ALTERNATIVE?");
+	private static final By PLUS_CONDITION_FOR_CHANGE_TEXT = MobileBy.xpath("//XCUIElementTypeCell[1]/XCUIElementTypeTextView");
+	private static final By PLUS_CONDITION_FOR_NOT_CHANGE_TEXT = MobileBy.xpath("//XCUIElementTypeCell[2]/XCUIElementTypeTextView");
 
 
 
-	public ResolutionPage() {
-		assertCurrentPage(STEP_3_A_PAGE);
+	public ResolutionPage(String blame) {
+		if(blame.matches("no one")) {
+			assertCurrentPage(STEP_3_A_PAGE);
+		}
+		else {
+			assertCurrentPage(STEP_3_B_PAGE);
+		}
 	}
 
 	public ResolutionPage options1() {
 		assertCurrentPage(OPTION_1);
-		logger.info("We are on STEP_3_A page and on Options 1");
+		logger.info("We are on STEP_3_A/B page and on Options 1");
 		return this;
 	}
 
@@ -57,37 +70,125 @@ public class ResolutionPage extends BasePage {
 	}
 
 	public ResolutionPage matchMyGoalText() {
-		matchText(MY_GOAL_BOX_VALUE, "My Goal Text Box Value Matched");
+		matchText(MY_GOAL_BOX_VALUE, "My Goal Text Box Value Matched", "Goal");
+		return this;
+	}
+
+	public ResolutionPage matchSomeOneGoalText() {
+		matchText(MY_GOAL_BOX_VALUE, "Someone Goal Text Box Value Matched", "Someone Goal");
+		return this;
+	}
+
+	public ResolutionPage matchMyselfGoalText() {
+		matchText(MY_GOAL_BOX_VALUE, "Myself Goal Text Box Value Matched", "Myself Goal");
 		return this;
 	}
 
 	public ResolutionPage matchUniqueProText() {
-		matchText(UNIQUE_PRO_BOX_VALUE, "My Unique Pro Text Box Value Matched");
+		matchText(UNIQUE_PRO_BOX_VALUE, "My Unique Pro Text Box Value Matched", "Unique Pros");
+		return this;
+	}
+
+	public ResolutionPage matchSomeoneUniqueProText() {
+		matchText(UNIQUE_PRO_BOX_VALUE, "Someone Unique Pro Text Box Value Matched", "Someone Unique Pros");
+		return this;
+	}
+
+	public ResolutionPage matchMyselfUniqueProText() {
+		matchText(UNIQUE_PRO_BOX_VALUE, "Myself Unique Pro Text Box Value Matched", "Myself Unique Pros");
 		return this;
 	}
 
 	public ResolutionPage matchAlternativeProText() {
-		matchText(ALTERNATIVE_PRO_BOX_VALUE, "My Alternative Pro Text Box Value Matched");
+		matchText(ALTERNATIVE_PRO_BOX_VALUE, "My Alternative Pro Text Box Value Matched", "Alternative Pros");
+		return this;
+	}
+
+	public ResolutionPage matchSomeoneAlternativeProText() {
+		matchText(ALTERNATIVE_PRO_BOX_VALUE, "Someone Alternative Pro Text Box Value Matched", "Someone Alternative Pros");
+		return this;
+	}
+
+	public ResolutionPage matchMyselfAlternativeProText() {
+		matchText(ALTERNATIVE_PRO_BOX_VALUE, "Myself Alternative Pro Text Box Value Matched", "Myself Alternative Pros");
 		return this;
 	}
 
 	public ResolutionPage matchUniqueSolutionText() {
-
 		String s = getText(CHANGE);
 		String[] s1=   s.split("-");
-		Assert.assertTrue(Harmony.contains(s1[1].trim()), "My Solution box values matched");
+		Assert.assertTrue(Harmony.get("Solution").matches(s1[1].trim().toString()), "My Solution box values matched");
 		//matchText(CHANGE, "My Unique Solution Text Box Value Matched");
+		return this;
+	}
+
+	public ResolutionPage matchSomeoneUniqueSolutionText() {
+		String s = getText(CHANGE);
+		String[] s1=   s.split("-");
+		Assert.assertTrue(Harmony.get("Someone Solution").matches(s1[1].trim().toString()), "Someone Solution box values matched");
+		//matchText(CHANGE, "My Unique Solution Text Box Value Matched");
+		return this;
+	}
+
+	public ResolutionPage matchMyselfUniqueSolutionText() {
+		String s = getText(CHANGE);
+		String[] s1=   s.split("-");
+		Assert.assertTrue(Harmony.get("Myself Solution").matches(s1[1].trim().toString()), "Myself Solution box values matched");
+		//matchText(CHANGE, "My Unique Solution Text Box Value Matched");
+		return this;
+	}
+
+	public ResolutionPage matchAlternativeSolutionText() {
+        String s = getText(CHANGE);
+        String[] s1=   s.split("-");
+        Assert.assertTrue(Harmony.get("Alternative Solution").matches(s1[1].trim().toString()), "My Alternative Solution box values matched");
+        return this;
+    }
+
+	public ResolutionPage matchSomeoneAlternativeSolutionText() {
+		String s = getText(CHANGE);
+		String[] s1=   s.split("-");
+		Assert.assertTrue(Harmony.get("Someone Alternative Solution").matches(s1[1].trim().toString()), "Someone Alternative Solution box values matched");
+		return this;
+	}
+
+	public ResolutionPage matchMyselfAlternativeSolutionText() {
+		String s = getText(CHANGE);
+		String[] s1=   s.split("-");
+		Assert.assertTrue(Harmony.get("Myself Alternative Solution").matches(s1[1].trim().toString()), "Myself Alternative Solution box values matched");
 		return this;
 	}
 
 
 	public ResolutionPage matchUniqueConsText() {
-		matchText(UNIQUE_CONS_BOX_VALUE, "My Unique Cons Text Value Matched");
+		matchText(UNIQUE_CONS_BOX_VALUE, "My Unique Cons Text Value Matched", "Unique Cons");
+		return this;
+	}
+
+	public ResolutionPage matchSomeoneUniqueConsText() {
+		matchText(UNIQUE_CONS_BOX_VALUE, "Someone Unique Cons Text Value Matched", "Someone Unique Cons");
+		return this;
+	}
+
+	public ResolutionPage matchMyselfUniqueConsText() {
+		matchText(UNIQUE_CONS_BOX_VALUE, "Myself Unique Cons Text Value Matched", "Myself Unique Cons");
 		return this;
 	}
 
 	public ResolutionPage matchAlternativeConsText() {
-		matchText(ALTERNATIVE_CONS_BOX_VALUE, "My Alternative Cons Text Value Matched");
+		matchText(ALTERNATIVE_CONS_BOX_VALUE, "My Alternative Cons Text Value Matched", "Alternative Cons");
+		logger.info("All matched and assertion done successfully");
+		return this;
+	}
+
+	public ResolutionPage matchSomeoneAlternativeConsText() {
+		matchText(ALTERNATIVE_CONS_BOX_VALUE, "Someone Alternative Cons Text Value Matched", "Someone Alternative Cons");
+		logger.info("All matched and assertion done successfully");
+		return this;
+	}
+
+	public ResolutionPage matchMyselfAlternativeConsText() {
+		matchText(ALTERNATIVE_CONS_BOX_VALUE, "Myself Alternative Cons Text Value Matched", "Myself Alternative Cons");
 		logger.info("All matched and assertion done successfully");
 		return this;
 	}
@@ -95,8 +196,8 @@ public class ResolutionPage extends BasePage {
 
 	public ResolutionPage clickOnSimpleResolution() throws InterruptedException {
 		clickElement(SIMPLE_RESOLUTION);
+		waitForPresence(SIMPLE_RESOLUTION_TEXT);
 		syncAction(2000);
-		done();
 		return this;
 	}
 
@@ -116,4 +217,87 @@ public class ResolutionPage extends BasePage {
 		assertCurrentPage(STILL_STUCK);
 		return this;
 	}
+
+	public ResolutionPage resolveOptions1() {
+		assertCurrentPage(CHANGE_PLUS_PLUS);
+		matchText(TEXT_VIEW, "CHANGE++ value matched", "Solution");
+		done();
+		return this;
+	}
+
+	public ResolutionPage someoneResolutionOption1() {
+		assertCurrentPage(CHANGE_PLUS_PLUS);
+		matchText(TEXT_VIEW, "CHANGE++ value matched", "Someone Solution");
+		done();
+		return this;
+	}
+
+	public ResolutionPage myselfResolutionOption1() {
+		assertCurrentPage(CHANGE_PLUS_PLUS);
+		matchText(TEXT_VIEW, "CHANGE++ value matched", "Myself Solution");
+		done();
+		return this;
+	}
+
+	public ResolutionPage resolveOptions2() {
+		assertCurrentPage(NOT_CHANGE_PLUS_PLUS);
+		matchText(TEXT_VIEW, "NOT++ CHANGE++ value matched", "Alternative Solution");
+		done();
+		return this;
+	}
+
+
+	public ResolutionPage someoneResolveOptions2() {
+		assertCurrentPage(NOT_CHANGE_PLUS_PLUS);
+		matchText(TEXT_VIEW, "NOT++ CHANGE++ value matched", "Someone Alternative Solution");
+		done();
+		return this;
+	}
+
+	public ResolutionPage myselfResolveOptions2() {
+		assertCurrentPage(NOT_CHANGE_PLUS_PLUS);
+		matchText(TEXT_VIEW, "NOT++ CHANGE++ value matched", "Myself Alternative Solution");
+		done();
+		return this;
+	}
+
+	public ResolutionPage resolveOption3() {
+		assertCurrentPage(PLUS_CONDITION_FOR_CHANGE);
+		assertCurrentPage(PLUS_CONDITION_FOR_NOT_CHANGE);
+		containText(PLUS_CONDITION_FOR_CHANGE_TEXT, "+ Conditions for CHANGE? text matched", "Solution");
+		containText(PLUS_CONDITION_FOR_NOT_CHANGE_TEXT, "+ Conditions for NOT CHANGE/ALTERNATIVE? text matched", "Alternative Solution");
+		done();
+		return this;
+	}
+
+	public ResolutionPage someoneResolveOption3() {
+		assertCurrentPage(PLUS_CONDITION_FOR_CHANGE);
+		assertCurrentPage(PLUS_CONDITION_FOR_NOT_CHANGE);
+		containText(PLUS_CONDITION_FOR_CHANGE_TEXT, "+ Conditions for CHANGE? text matched", "Someone Solution");
+		containText(PLUS_CONDITION_FOR_NOT_CHANGE_TEXT, "+ Conditions for NOT CHANGE/ALTERNATIVE? text matched", "Someone Alternative Solution");
+		done();
+		return this;
+	}
+
+	public ResolutionPage myselfResolveOption3() {
+		assertCurrentPage(PLUS_CONDITION_FOR_CHANGE);
+		assertCurrentPage(PLUS_CONDITION_FOR_NOT_CHANGE);
+		containText(PLUS_CONDITION_FOR_CHANGE_TEXT, "+ Conditions for CHANGE? text matched", "Myself Solution");
+		containText(PLUS_CONDITION_FOR_NOT_CHANGE_TEXT, "+ Conditions for NOT CHANGE/ALTERNATIVE? text matched", "Myself Alternative Solution");
+		done();
+		return this;
+	}
+
+	public ResolutionPage resolveOption4() {
+		done();
+		return this;
+	}
+
+
+//	public ResolutionPage printAllKeys() {
+//		for(String keys : Harmony.keySet()) {
+//			System.out.println(keys + ":" + Harmony.get(keys));
+//		}
+//		return this;
+//	}
 }

@@ -9,22 +9,28 @@ public class ExperimentPage extends BasePage {
 
 	final static Logger logger = Logger.getLogger(ExperimentPage.class);
 
-	private static final By STEP_5 = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeNavigationBar[1]/XCUIElementTypeButton[2]");
+	private static final By STEP_5A = MobileBy.xpath("//XCUIElementTypeStaticText[@name=\"Step 5a Experiment\"]");
+	private static final By STEP_5B = MobileBy.xpath("//XCUIElementTypeStaticText[@name=\"Step 5b Experiment\"]");
 	private static final By TEST_CONFLICT_DATA_RESOLVED = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeStaticText[1]");
-	private static final By WHY_1 = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]");
-	private static final By WAHT_FOR = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeOther[2]/XCUIElementTypeButton[1]");
-	private static final By WHY_2 = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeOther[3]/XCUIElementTypeButton[1]");
-	private static final By HOW_TO = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeOther[4]/XCUIElementTypeButton[1]");
-	private static final By WHY_3 = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeOther[5]/XCUIElementTypeButton[1]");
-	private static final By WHY_1_DATA = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[1]/XCUIElementTypeTextView[1]");
-	private static final By WHAT_FOR_DATA = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[2]/XCUIElementTypeTextView[1]");
-	private static final By WHY_2_DATA = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[3]/XCUIElementTypeTextView[1]");
-	private static final By HOW_TO_DATA = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[4]/XCUIElementTypeTextView[1]");
+	private static final By WHY_1 = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeOther[2]/XCUIElementTypeButton[1]");
+	private static final By WAHT_FOR = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeOther[3]/XCUIElementTypeButton[1]");
+	private static final By WHY_2 = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeOther[4]/XCUIElementTypeButton[1]");
+	private static final By HOW_TO = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeOther[5]/XCUIElementTypeButton[1]");
+	private static final By WHY_3 = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeOther[6]/XCUIElementTypeButton[1]");
+	private static final By WHY_1_DATA = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[2]/XCUIElementTypeTextView[1]");
+	private static final By WHAT_FOR_DATA = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[3]/XCUIElementTypeTextView[1]");
+	private static final By WHY_2_DATA = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[4]/XCUIElementTypeTextView[1]");
+	private static final By HOW_TO_DATA = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[5]/XCUIElementTypeTextView[1]");
 	private static final By SAVE_DATA_ALERT_BOX = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeAlert[1]");
 	private static final By OK = MobileBy.AccessibilityId("OK");
 
-	public ExperimentPage(){
-		assertCurrentPage(STEP_5);
+	public ExperimentPage(String blame){
+		if(blame.matches("no one")) {
+			assertCurrentPage(STEP_5A);
+		}
+		else {
+			assertCurrentPage(STEP_5B);
+		}
 	}
 
 	public ExperimentPage verifyTestConflictDataResolvedPage() {
@@ -59,35 +65,74 @@ public class ExperimentPage extends BasePage {
 
 	public ExperimentPage matchHowToData() {
 		waitAndClickElement(HOW_TO, 1);
-		Assert.assertTrue(Harmony.contains(getText(HOW_TO_DATA).split("\\s+")[4]));
+		Assert.assertTrue(Harmony.get("Solution").matches(getText(HOW_TO_DATA).split("\\s+")[4]));
+		logger.info("How To Data matched successfully");
+		return this;
+	}
+
+	public ExperimentPage matchSomeoneHowToData() {
+		waitAndClickElement(HOW_TO, 1);
+		Assert.assertTrue(Harmony.get("Someone Solution").matches(getText(HOW_TO_DATA).split("\\s+")[4]));
 		logger.info("How To Data matched successfully");
 		return this;
 	}
 
 	public ExperimentPage matchWhatForData() {
 		waitAndClickElement(WAHT_FOR,1 );
-		Assert.assertTrue(Harmony.contains(getText(WHAT_FOR_DATA).split("\\s+")[5]));
-		Assert.assertTrue(Harmony.contains(getText(WHAT_FOR_DATA).split("\\s+")[6]));
-		Assert.assertTrue(Harmony.contains(getText(WHAT_FOR_DATA).split("\\s+")[14]));
-		Assert.assertTrue(Harmony.contains(getText(WHAT_FOR_DATA).split("\\s+")[13]));
+		String s = getText(WHAT_FOR_DATA);
+		Assert.assertTrue(Harmony.get("Unique Pros").matches(s.split("\\s+")[5]));
+		Assert.assertTrue(Harmony.get("Alternative Pros").matches(s.split("\\s+")[7]));
+		Assert.assertTrue(Harmony.get("Unique Cons").matches(s.split("\\s+")[14]));
+		Assert.assertTrue(Harmony.get("Alternative Cons").matches(s.split("\\s+")[16]));
+		logger.info("What for data matched successfully");
+		return this;
+	}
+
+	public ExperimentPage matchSomeoneWhatForData() {
+		waitAndClickElement(WAHT_FOR,1 );
+		String s = getText(WHAT_FOR_DATA);
+		Assert.assertTrue(Harmony.get("Someone Unique Pros").matches(s.split("\\s+")[5]));
+		Assert.assertTrue(Harmony.get("Someone Alternative Pros").matches(s.split("\\s+")[7]));
+		Assert.assertTrue(Harmony.get("Someone Unique Cons").matches(s.split("\\s+")[14]));
+		Assert.assertTrue(Harmony.get("Someone Alternative Cons").matches(s.split("\\s+")[16]));
 		logger.info("What for data matched successfully");
 		return this;
 	}
 
 	public ExperimentPage matchWhy2Data() {
 		waitAndClickElement(WHY_2, 1);
-		Assert.assertTrue(Harmony.contains(getText(WHY_2_DATA).split("\\s+")[12]));
-		Assert.assertTrue(Harmony.contains(getText(WHY_2_DATA).split("\\s+")[16]));
-		Assert.assertTrue(Harmony.contains(getText(WHY_2_DATA).split("\\s+")[29]));
-		Assert.assertTrue(Harmony.contains(getText(WHY_2_DATA).split("\\s+")[34]));
+        String s = getText(WHY_2_DATA);
+		Assert.assertTrue(Harmony.get("Solution").matches(s.split("\\s+")[12]));
+		Assert.assertTrue(Harmony.get("Alternative Pros").matches(s.split("\\s+")[16]));
+		Assert.assertTrue(Harmony.get("Solution").matches(s.split("\\s+")[29]));
+		Assert.assertTrue(Harmony.get("Unique Cons").matches(s.split("\\s+")[34]));
+		return this;
+	}
+
+	public ExperimentPage matchSomeoneWhy2Data() {
+		waitAndClickElement(WHY_2, 1);
+		String s = getText(WHY_2_DATA);
+		Assert.assertTrue(Harmony.get("Someone Solution").matches(s.split("\\s+")[12]));
+		Assert.assertTrue(Harmony.get("Someone Alternative Pros").matches(s.split("\\s+")[16]));
+		Assert.assertTrue(Harmony.get("Someone Solution").matches(s.split("\\s+")[29]));
+		Assert.assertTrue(Harmony.get("Someone Unique Cons").matches(s.split("\\s+")[34]));
 		return this;
 	}
 
 	public ExperimentPage matchWhy1Data() {
 		String s = getText(WHY_1_DATA);
-		Assert.assertTrue(Harmony.contains(s.split("\\s+")[2]));
-		Assert.assertTrue(Harmony.contains(s.split("\\s+")[6]));
-		Assert.assertTrue(Harmony.contains(s.split("\\s+")[8]));
+		Assert.assertTrue(s.split("\\s+")[2].matches(Harmony.get("Problem")));
+		Assert.assertTrue(s.split("\\s+")[6].matches(Harmony.get("Impact on me")));
+		Assert.assertTrue(s.split("\\s+")[8].matches(Harmony.get("Impact on Others")));
+		logger.info("Why 1 Data Matched");
+		return this;
+	}
+
+	public ExperimentPage matchSomeoneWhy1Data() {
+		String s = getText(WHY_1_DATA);
+		Assert.assertTrue(s.split("\\s+")[2].matches(Harmony.get("Problem")));
+		Assert.assertTrue(s.split("\\s+")[6].matches(Harmony.get("Impact on me")));
+		Assert.assertTrue(s.split("\\s+")[8].matches(Harmony.get("Impact on Others")));
 		logger.info("Why 1 Data Matched");
 		return this;
 	}

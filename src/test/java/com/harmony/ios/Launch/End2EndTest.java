@@ -20,24 +20,26 @@ public class End2EndTest extends iOSBaseTest {
 
 
 	@Test(priority = 0)
-	public void Login() throws InterruptedException {
+	public End2EndTest Login() throws InterruptedException {
 		LoginPage loginPage = new LoginPage();
 		loginPage
 				.signIn()
 				.LoginPage()
 				.enterUserName()
 				.clickSignin();
-
+		return this;
 	}
 
 	@Test(priority = 1)
-	public void Create_Conflict() throws InterruptedException {
+	public End2EndTest Create_Conflict() throws InterruptedException {
 		CreateConflict cc = new CreateConflict();
 		cc
 				.alertBox()
 				.dontAllowAlert()
 				.clickOnStaticText()
+                .checkProConCloudAlertBox()
 				.moveToConflict()
+                .checkOFChatICON()
 				.createConflict()
 				.checkConflitBox()
 				.enterConflictValue()
@@ -45,20 +47,11 @@ public class End2EndTest extends iOSBaseTest {
 				.syncAction(5000);
 		cc
 				.verifyCreatedConflict();
-	}
-
-	@Test(priority = 2)
-	public void deleteConflict() throws InterruptedException {
-		DeleteConflictPage deleteConflictPage = new DeleteConflictPage();
-		deleteConflictPage
-				.deleteConflict()
-				.verifyDeleteAlert()
-				.delete()
-				.verifyDeletedConflict();
+		return this;
 	}
 
 	@Test(priority = 3)
-	public void enterMyProblem() throws InterruptedException {
+	public End2EndTest enterMyProblem() throws InterruptedException {
 		MyProblemPage myProblemPage = new MyProblemPage();
 		myProblemPage
 				.clickOnConflict()
@@ -66,10 +59,11 @@ public class End2EndTest extends iOSBaseTest {
 				.enterTheProblem()
 				.impactOnMe()
 				.impactOnOthers();
+		return this;
 	}
 
 	@Test(priority = 4)
-	public void enterMyConflict() throws InterruptedException {
+	public End2EndTest enterMyConflict() throws InterruptedException {
 		MyConflictPage myConflictPage = new MyConflictPage();
 		myConflictPage
 				.enterSolutionInBox()
@@ -82,11 +76,12 @@ public class End2EndTest extends iOSBaseTest {
 				.enterThreatInBox()
 				.verifyBlameAlertBox()
 				.clickNoForBlame();
+		return this;
 	}
 
 	@Test(priority = 5)
-	void enterMyResolutionOption1() throws InterruptedException {
-		ResolutionPage resolutionPage = new ResolutionPage();
+	public End2EndTest enterMyResolutionOption1() throws InterruptedException {
+		ResolutionPage resolutionPage = new ResolutionPage("no one");
 		resolutionPage
 				.matchMyGoalText()
 				.matchUniqueProText()
@@ -98,31 +93,35 @@ public class End2EndTest extends iOSBaseTest {
 		resolutionPage
 				.verifyResolutionBox()
 				.clickOnSimpleResolution()
+				.resolveOptions1()
 				.verifyStillStuck()
 				.goToNext();
+		return this;
 	}
 
 	@Test(priority = 6)
-	void enterMyResolutionOption2() throws InterruptedException {
-		ResolutionPage resolutionPage = new ResolutionPage();
+	public End2EndTest enterMyResolutionOption2() throws InterruptedException {
+		ResolutionPage resolutionPage = new ResolutionPage("no one");
 		resolutionPage
 				.options2()
 				.matchMyGoalText()
 				.matchUniqueProText()
 				.matchAlternativeProText()
 				.matchAlternativeConsText()
-				.matchUniqueSolutionText();
+				.matchAlternativeSolutionText();
 		resolutionPage
 				.goToNext();
 		resolutionPage
 				.verifyResolutionBox()
 				.clickOnSimpleResolution()
+				.resolveOptions2()
 				.goToNext();
+		return this;
 	}
 
 	@Test(priority = 7)
-	void enterMyResolutionOption3() throws InterruptedException {
-		ResolutionPage resolutionPage = new ResolutionPage();
+	public End2EndTest enterMyResolutionOption3() throws InterruptedException {
+		ResolutionPage resolutionPage = new ResolutionPage("no one");
 		resolutionPage
 				.options3()
 				.matchMyGoalText()
@@ -135,12 +134,14 @@ public class End2EndTest extends iOSBaseTest {
 		resolutionPage
 				.verifyResolutionBox()
 				.clickOnSimpleResolution()
+				.resolveOption3()
 				.goToNext();
+		return this;
 	}
 
 	@Test(priority = 8)
-	void enterMyResolutionOption4() throws InterruptedException {
-		ResolutionPage resolutionPage = new ResolutionPage();
+	public End2EndTest enterMyResolutionOption4() throws InterruptedException {
+		ResolutionPage resolutionPage = new ResolutionPage("no one");
 		resolutionPage
 				.options4()
 				.matchMyGoalText()
@@ -153,27 +154,30 @@ public class End2EndTest extends iOSBaseTest {
 		resolutionPage
 				.verifyResolutionBox()
 				.clickOnSimpleResolution()
+				.resolveOption4()
 				.goToNext();
+		return this;
 	}
 
 	@Test(priority = 9)
-	void chooseResolution() {
+	public End2EndTest chooseResolution() {
 		ChooseResolutionOptionPage chooseResolutionOptionPage = new ChooseResolutionOptionPage();
 		chooseResolutionOptionPage
-				.Option1()
-				.Option2()
-				.Option3()
-				.Option4()
-				.clickIcon1()
+//				.Option1()
+//				.Option2()
+//				.Option3()
+//				.Option4()
+//				.clickIcon1()
 				.matchChangeText()
-				.clickIcon2()
-				.matchNotChangeText()
+//				.clickIcon2()
+//				.matchNotChangeText()
 				.selectRadioButton();
+		return this;
 	}
 
 	@Test(priority = 10)
-	void Planning() {
-		TestConflictDataResolvedPage testConflictDataResolvedPage = new TestConflictDataResolvedPage();
+	public End2EndTest Planning() {
+		TestConflictDataResolvedPage testConflictDataResolvedPage = new TestConflictDataResolvedPage("no one");
 		testConflictDataResolvedPage
 				.onConflictResolvedPage()
 				.checkStrategy()
@@ -181,11 +185,12 @@ public class End2EndTest extends iOSBaseTest {
 				.checkStackholders()
 				.matchTacticData()
 				.matchStrategyData();
+		return this;
 	}
 
 	@Test(priority = 11)
-	void Experiment() {
-		ExperimentPage experimentPage = new ExperimentPage();
+	public End2EndTest Experiment() {
+		ExperimentPage experimentPage = new ExperimentPage("no one");
 		experimentPage
 				.verifyTestConflictDataResolvedPage()
 				.verifyWhy1()
@@ -202,11 +207,11 @@ public class End2EndTest extends iOSBaseTest {
 		experimentPage
 				.verifySaveDataAlert()
 				.clickOK();
+		return this;
 	}
 
-
 	@Test (priority = 12)
-	void StoryVerify() {
+	public End2EndTest StoryVerify() {
 		IconStoryPage iconStoryPage = new IconStoryPage();
 		iconStoryPage
 				.moveToStory()
@@ -228,10 +233,11 @@ public class End2EndTest extends iOSBaseTest {
 				.verifyAlternativeProText()
 				.verifyAlternativeConsText()
 				.moveToHome();
+		return this;
 	}
 
 	@Test(priority = 13)
-	public void shareConflict() throws InterruptedException {
+	public End2EndTest shareConflict() throws InterruptedException {
 		ShareConflictPage shareConflictPage = new ShareConflictPage();
 		shareConflictPage
 				.getConflictName()
@@ -243,6 +249,21 @@ public class End2EndTest extends iOSBaseTest {
 				.movetoConflictLibrary();
 		shareConflictPage
 				.syncAction(10000);
+		shareConflictPage
+				.moveMyDecisionPage();
+		return this;
+	}
+
+
+	@Test(priority = 2)
+	public End2EndTest deleteConflict() throws InterruptedException {
+		DeleteConflictPage deleteConflictPage = new DeleteConflictPage();
+		deleteConflictPage
+				.deleteConflict()
+				.verifyDeleteAlert()
+				.delete()
+				.verifyDeletedConflict();
+		return this;
 	}
 
 }

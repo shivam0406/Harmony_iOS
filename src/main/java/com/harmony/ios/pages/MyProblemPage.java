@@ -12,9 +12,10 @@ public class MyProblemPage extends BasePage {
 
 	private static final By CLICK_ON_CONFLICT = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeTable[1]/XCUIElementTypeCell[1]");
 	private static final By STEP_1_PAGE = MobileBy.AccessibilityId("Step 1 My Problem");
-	private static final By ENETER_PROBLEM = MobileBy.AccessibilityId("What is the problem you are facing?");
-	private static final By IMPACT_ON_ME = MobileBy.AccessibilityId("Why is this problem bad for you?");
-	private static final By IMPACT_ON_OTHERS = MobileBy.AccessibilityId("Why is this problem bad for others/system?");
+	private static final By ENTER_PROBLEM = MobileBy.AccessibilityId("What problem/decision you are facing that hangs over you like a dark cloud?");
+	private static final By IMPACT_ON_ME = MobileBy.AccessibilityId("Why is this problem bad for YOU?");
+	private static final By IMPACT_ON_OTHERS = MobileBy.AccessibilityId("Why is this problem bad for OTHERS?");
+
 
 	public MyProblemPage() {
 		assertCurrentPage(CLICK_ON_CONFLICT);
@@ -35,7 +36,7 @@ public class MyProblemPage extends BasePage {
 	public MyProblemPage enterTheProblem() throws InterruptedException {
 		logger.info("Let's enter the problem");
 		String myValue = TestUtils.randomValues();
-		enterValueinBoxes(ENETER_PROBLEM, myValue, "Problem");
+		enterValueinBoxes(ENTER_PROBLEM, myValue, "Problem");
 		syncAction(1000);
 		clickElement(NEXT);
 		return this;

@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 public class BasePage {
@@ -21,12 +22,16 @@ public class BasePage {
 
 	IOSDriver driver = WebDriverFactory.getIOSDriver();
 
-	public static final List<String> Harmony = new ArrayList<String>();
+	protected static final Hashtable<String, String> Harmony = new Hashtable<>();
 
 	final int DEFAULT_WAIT_TIME_FOR_ELEMENT = 30;
 
 	public static final By NEXT = MobileBy.AccessibilityId("Next");
 	public static final By DONE = MobileBy.AccessibilityId("Done");
+	public static final By DONE2 = MobileBy.xpath("//XCUIElementTypeButton[@name=\"Done\"]");
+	public static final By TEXT_VIEW = MobileBy.xpath("//XCUIElementTypeTextView");
+	public static final By MOVE_TO_CONFLICT= MobileBy.AccessibilityId("My Decisions");
+	public static final By SHARED_DECISIONS = MobileBy.AccessibilityId("Shared Decisions");
 
 	public void assertCurrentPage(By pageIdentifier) {
 		try{
@@ -57,8 +62,8 @@ public class BasePage {
 	}
 
 	public void setValues(By locator, String value){
-		WebElement element = driver.findElement(locator);
-		element.sendKeys(value);
+		driver.findElement(locator).click();
+		driver.findElement(TEXT_VIEW).sendKeys(value);
 	}
 
 	public void setValueswithHideKeyboard(By locator, String values){
@@ -116,12 +121,33 @@ public class BasePage {
 		setValues(locator, value);
 		syncAction(2000);
 		done();
-		Harmony.add(value);
+		Harmony.put(nameOfBox, value);
 		return this;
 	}
 
-	public BasePage matchText(By locator, String message){
-		Assert.assertTrue(Harmony.contains(getText(locator).toString()), message);
+	public BasePage enterValueinBoxesWithoutDone(By locator, String value, String nameOfBox) throws InterruptedException {
+		logger.info("Enter Value in " +nameOfBox+ " Box");
+		setValues(locator, value);
+		syncAction(2000);
+		Harmony.put(nameOfBox, value);
+		return this;
+	}
+
+	public BasePage matchText(By locator, String message, String key){
+		//Assert.assertTrue(Harmony.contains(getText(locator).toString()), message);
+		Assert.assertTrue(Harmony.get(key).matches(getText(locator).toString()), message);
+		return this;
+	}
+
+	public BasePage clickAndMatchText(By locator, String message, String key) {
+		clickElement(locator);
+		Assert.assertTrue(Harmony.get(key).matches(getText(TEXT_VIEW)), message);
+		clickElement(TEXT_VIEW);
+		return this;
+	}
+
+	public BasePage containText(By locator, String message, String key) {
+		Assert.assertTrue(Harmony.get(key).matches(getText(locator).split("\\(")[1].split("\\)")[0].toString()));
 		return this;
 	}
 

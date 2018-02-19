@@ -11,8 +11,8 @@ public class ChooseResolutionOptionPage extends BasePage{
 	final static Logger logger = Logger.getLogger(ChooseResolutionOptionPage.class);
 
 	private static final By CHOOSE_YOUR_RESOLUTION_OPTION = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeStaticText[1]");
-	private static final By OPTION_1 = MobileBy.AccessibilityId("Option 1: CHANGE++");
-	private static final By OPTION_2 = MobileBy.AccessibilityId("Option 2: NOT CHANGE++");
+	private static final By OPTION_1 = MobileBy.AccessibilityId("Option 1: CHANGE ++");
+	private static final By OPTION_2 = MobileBy.AccessibilityId("Option 2: NOT CHANGE ++");
 	private static final By OPTION_3 = MobileBy.AccessibilityId("Option 3: WHEN + WHEN NOT");
 	private static final By OPTION_4 = MobileBy.AccessibilityId("Option 4: ANOTHER CHANGE");
 	private static final By CHANGE = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[1]/XCUIElementTypeTextView[1]");
@@ -70,7 +70,7 @@ public class ChooseResolutionOptionPage extends BasePage{
 
 		String s = getText(CHANGE);
 		String[] s1=   s.split("-");
-		Assert.assertTrue(Harmony.contains(s1[1].trim()), "My Solution box values matched");
+		Assert.assertTrue(Harmony.get("Solution").matches(s1[1].trim()), "My Solution box values matched");
 		//matchText(CHANGE, "My Unique Solution Text Box Value Matched");
 		return this;
 	}
@@ -78,7 +78,7 @@ public class ChooseResolutionOptionPage extends BasePage{
 	public ChooseResolutionOptionPage matchNotChangeText() {
 		String s = getText(NOT_CHANGE);
 		String[] s1=   s.split("-");
-		Assert.assertTrue(Harmony.contains(s1[1].trim()), "My Solution box values matched");
+		Assert.assertTrue(Harmony.get("Alternative Solution").matches(s1[1].trim()), "My Solution box values matched");
 		//matchText(CHANGE, "My Unique Solution Text Box Value Matched");
 		return this;
 	}
@@ -89,6 +89,4 @@ public class ChooseResolutionOptionPage extends BasePage{
 		goToNext();
 		return this;
 	}
-
-
 }

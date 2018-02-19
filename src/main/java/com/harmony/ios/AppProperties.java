@@ -15,11 +15,11 @@ public class AppProperties {
 	private String AUTOMATION_NAME  = "XCUITest";
 
 	private String appName;
-	private String platformName;
+	private String platformName = "iOS";
 	private String platformVersion;
 	private String appID;
 	private String appPassword;
-	private String udid ;
+	private String udid = "0b57a80f9855da5257db94bbdcef2e6e8b1e6ea3";
 	private String screenMode;
 	private String appDir;
 	private boolean showIOSLog = true;
