@@ -32,9 +32,9 @@ public class DeleteConflictPage extends BasePage {
 		return this;
 	}
 
-	public DeleteConflictPage delete() {
-		logger.info("Clicking on Yes");
-		clickElement(YES);
+	public DeleteConflictPage delete() throws InterruptedException {
+		syncAction(4000);
+		allowAlertBoxes("Are you sure");
 		return this;
 	}
 

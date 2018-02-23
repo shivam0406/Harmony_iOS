@@ -56,7 +56,8 @@ public class End2EndTestWithBlameSomeOne extends iOSBaseTest {
                 .enterSomeoneAlternativeProsInBox()
                 .enterSomeoneAlternativeConsInBox()
                 .enterSomeoneGoalInBox()
-                .enterSomeoneThreatInBox();
+                .enterSomeoneThreatInBox()
+                .dismissCongratulation();
         }
 
         @Test
@@ -139,7 +140,7 @@ public class End2EndTestWithBlameSomeOne extends iOSBaseTest {
 
 
     @Test
-    public void test8() {
+    public void test8() throws InterruptedException {
         ChooseResolutionOptionPage chooseResolutionOptionPage = new ChooseResolutionOptionPage();
         chooseResolutionOptionPage
 //				.Option1()
@@ -150,12 +151,13 @@ public class End2EndTestWithBlameSomeOne extends iOSBaseTest {
 //                .matchChangeText()
 //				.cli ckIcon2()
 //				.matchNotChangeText()
-                .selectRadioButton();
+                .selectRadioButton()
+                .dismissCongratulation();
 
     }
 
     @Test
-    public void test9() {
+    public void test9() throws InterruptedException {
         TestConflictDataResolvedPage testConflictDataResolvedPage = new TestConflictDataResolvedPage("someone");
         testConflictDataResolvedPage
                 .onConflictResolvedPage()
@@ -163,12 +165,13 @@ public class End2EndTestWithBlameSomeOne extends iOSBaseTest {
                 .checkTactic()
                 .checkStackholders()
                 .matchSomeoneTacticData()
-                .matchSomeoneStrategyData();
+                .matchSomeoneStrategyData()
+                .dismissCongratulation();
     }
 
 
     @Test
-    public void test10() {
+    public void test10() throws InterruptedException {
         ExperimentPage experimentPage = new ExperimentPage("someone");
         experimentPage
                 .verifyTestConflictDataResolvedPage()
@@ -185,7 +188,9 @@ public class End2EndTestWithBlameSomeOne extends iOSBaseTest {
                 .done();
         experimentPage
                 .verifySaveDataAlert()
-                .clickOK();
+                .clickOK()
+                .dismissCongratulation();
+
     }
 
     @Test

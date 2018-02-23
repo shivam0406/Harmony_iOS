@@ -34,7 +34,6 @@ public class End2EndTest extends iOSBaseTest {
 	public End2EndTest Create_Conflict() throws InterruptedException {
 		CreateConflict cc = new CreateConflict();
 		cc
-				.alertBox()
 				.dontAllowAlert()
 				.clickOnStaticText()
                 .checkProConCloudAlertBox()
@@ -44,7 +43,7 @@ public class End2EndTest extends iOSBaseTest {
 				.checkConflitBox()
 				.enterConflictValue()
 				.clickOK()
-				.syncAction(5000);
+				.syncAction(10000);
 		cc
 				.verifyCreatedConflict();
 		return this;
@@ -75,7 +74,8 @@ public class End2EndTest extends iOSBaseTest {
 				.enterGoalInBox()
 				.enterThreatInBox()
 				.verifyBlameAlertBox()
-				.clickNoForBlame();
+				.clickNoForBlame()
+				.dismissCongratulation();
 		return this;
 	}
 
@@ -160,23 +160,24 @@ public class End2EndTest extends iOSBaseTest {
 	}
 
 	@Test(priority = 9)
-	public End2EndTest chooseResolution() {
+	public End2EndTest chooseResolution() throws InterruptedException {
 		ChooseResolutionOptionPage chooseResolutionOptionPage = new ChooseResolutionOptionPage();
 		chooseResolutionOptionPage
-//				.Option1()
-//				.Option2()
-//				.Option3()
-//				.Option4()
+				.Option1()
+				.Option2()
+				.Option3()
+				.Option4()
 //				.clickIcon1()
 				.matchChangeText()
 //				.clickIcon2()
 //				.matchNotChangeText()
-				.selectRadioButton();
+				.selectRadioButton()
+				.dismissCongratulation();
 		return this;
 	}
 
 	@Test(priority = 10)
-	public End2EndTest Planning() {
+	public End2EndTest Planning() throws InterruptedException {
 		TestConflictDataResolvedPage testConflictDataResolvedPage = new TestConflictDataResolvedPage("no one");
 		testConflictDataResolvedPage
 				.onConflictResolvedPage()
@@ -184,12 +185,13 @@ public class End2EndTest extends iOSBaseTest {
 				.checkTactic()
 				.checkStackholders()
 				.matchTacticData()
-				.matchStrategyData();
+				.matchStrategyData()
+				.dismissCongratulation();
 		return this;
 	}
 
 	@Test(priority = 11)
-	public End2EndTest Experiment() {
+	public End2EndTest Experiment() throws InterruptedException {
 		ExperimentPage experimentPage = new ExperimentPage("no one");
 		experimentPage
 				.verifyTestConflictDataResolvedPage()
@@ -206,7 +208,8 @@ public class End2EndTest extends iOSBaseTest {
 				.done();
 		experimentPage
 				.verifySaveDataAlert()
-				.clickOK();
+				.clickOK()
+				.dismissCongratulation();
 		return this;
 	}
 
@@ -244,9 +247,11 @@ public class End2EndTest extends iOSBaseTest {
 				.clickOnShareButton()
 				.verifySharePopUp()
 				.sharePublic()
+                .shareAnonymously()
 				.checkSharedAlertBox()
 				.clickOK()
-				.movetoConflictLibrary();
+				.movetoConflictLibrary()
+                .verifyAnonymousedSharedPersonName();
 		shareConflictPage
 				.syncAction(10000);
 		shareConflictPage
@@ -254,16 +259,22 @@ public class End2EndTest extends iOSBaseTest {
 		return this;
 	}
 
+	@Test(priority = 14)
+    public End2EndTest verifyAllOptionsOnHome() {
+	 AllOptionsOnHomeScreen allOptionsOnHomeScreen = new AllOptionsOnHomeScreen();
+	 allOptionsOnHomeScreen
+             .verifyChatSection();
+	 return this;
+    }
 
-	@Test(priority = 2)
+
+	@Test(priority = 15)
 	public End2EndTest deleteConflict() throws InterruptedException {
 		DeleteConflictPage deleteConflictPage = new DeleteConflictPage();
 		deleteConflictPage
 				.deleteConflict()
-				.verifyDeleteAlert()
 				.delete()
 				.verifyDeletedConflict();
 		return this;
 	}
-
 }

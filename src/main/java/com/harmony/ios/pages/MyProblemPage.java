@@ -12,18 +12,19 @@ public class MyProblemPage extends BasePage {
 
 	private static final By CLICK_ON_CONFLICT = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeTable[1]/XCUIElementTypeCell[1]");
 	private static final By STEP_1_PAGE = MobileBy.AccessibilityId("Step 1 My Problem");
-	private static final By ENTER_PROBLEM = MobileBy.AccessibilityId("What problem/decision you are facing that hangs over you like a dark cloud?");
-	private static final By IMPACT_ON_ME = MobileBy.AccessibilityId("Why is this problem bad for YOU?");
-	private static final By IMPACT_ON_OTHERS = MobileBy.AccessibilityId("Why is this problem bad for OTHERS?");
+	private static final By ENTER_PROBLEM = MobileBy.AccessibilityId("What problem/decision are you facing that hangs over you like a dark cloud?");
+	private static final By IMPACT_ON_ME = MobileBy.AccessibilityId("Why is this problem bad/important for YOU?");
+	private static final By IMPACT_ON_OTHERS = MobileBy.AccessibilityId("Why is this problem bad/important for OTHERS?");
 
 
 	public MyProblemPage() {
-		assertCurrentPage(CLICK_ON_CONFLICT);
+		//assertCurrentPage(CLICK_ON_CONFLICT);
 	}
 
 	public MyProblemPage clickOnConflict() {
 		logger.info("Clicking on Conflict");
 		clickElement(CLICK_ON_CONFLICT);
+		logger.info(Harmony);
 		return this;
 	}
 

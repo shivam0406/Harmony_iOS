@@ -5,6 +5,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import java.util.regex.Pattern;
+
 public class ShareConflictPage extends BasePage {
 	final static Logger logger = Logger.getLogger(ShareConflictPage.class);
 
@@ -24,6 +26,9 @@ public class ShareConflictPage extends BasePage {
 	private static final By UNLOCK = MobileBy.AccessibilityId("icon unlock black");
 	private static final By CONFLICT_LIBRARY = MobileBy.AccessibilityId("Community Library");
 	private static final By CONFLICT_NAME = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeTable[1]/XCUIElementTypeCell[1]/XCUIElementTypeStaticText[1]");
+	private static final By SHARE_ANONYMOUSLY = MobileBy.AccessibilityId("Share Anonymously");
+	private static final By SHARE_BY_NAME = MobileBy.AccessibilityId("Share with Your Name");
+	private static final By SHARED_PERSON_NAME = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeTable[1]/XCUIElementTypeCell[1]/XCUIElementTypeStaticText[3]");
 	String ConflictName = null;
 
 
@@ -125,12 +130,32 @@ public class ShareConflictPage extends BasePage {
 		syncAction(5000);
 		String s = getText(CONFLICT_NAME);
 		Assert.assertEquals(ConflictName, s, "Both String has matched");
+		clickElement(CONFLICT_NAME);
 		return this;
 	}
 
 	public ShareConflictPage moveMyDecisionPage() {
 		logger.info("Shared conflict has been verified now move back to home page");
 		waitAndClickElement(MOVE_TO_CONFLICT, 3);
+		return this;
+	}
+
+	public ShareConflictPage shareAnonymously() {
+		logger.info("Sharing the conflict without name/ anonymously");
+		waitAndClickElement(SHARE_ANONYMOUSLY, 5);
+		return this;
+	}
+
+	public ShareConflictPage verifyAnonymousedSharedPersonName() {
+		logger.info("Let's verified that shared person name is displaying or not");
+		//if(getText(SHARED_PERSON_NAME).mat(/^.*?\bcat\b.*?\bmat\b.*?$/m))
+		Assert.assertTrue(getText(SHARED_PERSON_NAME).contains("Vaibhav"), "Name matched");
+		return this;
+	}
+
+	public ShareConflictPage shareWithName() {
+		logger.info("Let's share with name");
+		waitAndClickElement(SHARE_BY_NAME, 5);
 		return this;
 	}
 

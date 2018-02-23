@@ -28,9 +28,9 @@ public class ResolutionPage extends BasePage {
 	private static final By STILL_STUCK = MobileBy.AccessibilityId("Still Stuck?");
 	private static final By SIMPLE_RESOLUTION_TEXT = MobileBy.AccessibilityId("SIMPLE RESOLUTIONS");
 	private static final By CHANGE_PLUS_PLUS =  MobileBy.AccessibilityId("CHANGE ++");
-	private static final By NOT_CHANGE_PLUS_PLUS =  MobileBy.AccessibilityId("NOT CHANGE ++");
+	private static final By NOT_CHANGE_PLUS_PLUS =  MobileBy.AccessibilityId("NO CHANGE ++");
 	private static final By PLUS_CONDITION_FOR_CHANGE = MobileBy.AccessibilityId("+ Conditions for CHANGE?");
-	private static final By PLUS_CONDITION_FOR_NOT_CHANGE = MobileBy.AccessibilityId("+ Conditions for NOT CHANGE/ALTERNATIVE?");
+	private static final By PLUS_CONDITION_FOR_NOT_CHANGE = MobileBy.AccessibilityId("+ Conditions for NO CHANGE?");
 	private static final By PLUS_CONDITION_FOR_CHANGE_TEXT = MobileBy.xpath("//XCUIElementTypeCell[1]/XCUIElementTypeTextView");
 	private static final By PLUS_CONDITION_FOR_NOT_CHANGE_TEXT = MobileBy.xpath("//XCUIElementTypeCell[2]/XCUIElementTypeTextView");
 

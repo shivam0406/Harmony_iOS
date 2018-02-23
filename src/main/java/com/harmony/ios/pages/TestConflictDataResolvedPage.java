@@ -9,7 +9,7 @@ public class TestConflictDataResolvedPage extends BasePage {
 
 	final static Logger logger = Logger.getLogger(TestConflictDataResolvedPage.class);
 
-	private static final By TEST_CONFLICT_DATA_RESOLVED = MobileBy.AccessibilityId("DECISION RESOLVED");
+	private static final By TEST_CONFLICT_DATA_RESOLVED = MobileBy.AccessibilityId("SELECTED WIN:WIN OPTION");
 	private static final By STRATEGY = MobileBy.AccessibilityId("WHAT ? - The Objectives or STRATEGY of the Change");
 	private static final By TACTIC = MobileBy.AccessibilityId("HOW ? - The Details or TACTIC of the Change");
 	private static final By STAKE_HOLDERS = MobileBy.AccessibilityId("STAKEHOLDER'S RESERVATIONS(YES,BUTS)");
@@ -91,7 +91,13 @@ public class TestConflictDataResolvedPage extends BasePage {
 		return this;
 	}
 
-
+	public TestConflictDataResolvedPage dismissCongratulation() throws InterruptedException {
+		syncAction(5000);
+		dismissAlertBoxes("Congratulations");
+		syncAction(5000);
+		dismissAlertBoxes("Are you sure?");
+		return this;
+	}
 
 
 }

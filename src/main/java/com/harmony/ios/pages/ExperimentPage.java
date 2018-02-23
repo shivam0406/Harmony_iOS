@@ -149,4 +149,11 @@ public class ExperimentPage extends BasePage {
 		return this;
 	}
 
+	public ExperimentPage dismissCongratulation() throws InterruptedException {
+		syncAction(5000);
+		dismissAlertBoxes("Congratulations");
+		syncAction(5000);
+		dismissAlertBoxes("Are you sure?");
+		return this;
+	}
 }

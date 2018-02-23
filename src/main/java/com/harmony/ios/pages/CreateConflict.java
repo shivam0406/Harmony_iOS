@@ -22,7 +22,9 @@ public class CreateConflict extends BasePage {
 	private static final By CONFLICT_TEXT = MobileBy.AccessibilityId("My Decisions");
 	private static final By COMMUNITY_COFLICT_TEXT = MobileBy.AccessibilityId("Community Library");
 	private static final By LEARNING = MobileBy.AccessibilityId("Learning from each other");
+	private static final By SHARE = MobileBy.AccessibilityId("SHARE");
 	private static final By SHARED_DECISIONS = MobileBy.AccessibilityId("Shared Decisions");
+	private static final By MESSENGING_INTERFACE = MobileBy.AccessibilityId("MESSENGING INTERFACE");
 	private static final By CONFLICT_TEXT_BOX = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeAlert[1]");
 	private static final By ENTER_VALUE = MobileBy.xpath("//XCUIElementTypeApplication[@name=\"HDM\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeAlert/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeTextField");
 	private static final By OK = MobileBy.AccessibilityId("OK");
@@ -45,14 +47,6 @@ public class CreateConflict extends BasePage {
 		return this;
 	}
 
-	public CreateConflict alertBox() {
-//		if(isElementPresent(ALERT)) {
-//			assertCurrentPage(ALERT);
-//		}
-//		else
-//			assertCurrentPage(ALERT_2);
-		return this;
-	}
 
 	public CreateConflict checkConflitBox() {
 		assertCurrentPage(CONFLICT_TEXT_BOX);
@@ -63,6 +57,12 @@ public class CreateConflict extends BasePage {
 	public CreateConflict checkOFChatICON() {
 		assertCurrentPage(CHAT_ICON);
 		logger.info("Chat icon is present on screen");
+		return this;
+	}
+
+	public CreateConflict createConflictUsingChat() {
+		logger.info("Lets create the conflict using CHAT");
+		waitAndClickElement(CHAT_ICON, 5);
 		return this;
 	}
 
@@ -82,17 +82,21 @@ public class CreateConflict extends BasePage {
 
 	public CreateConflict dontAllowAlert() {
 		logger.info("Let's Not allow the alert");
-		waitAndClickElement(DONT_ALLOW,60);
+		//waitAndClickElement(DONT_ALLOW,60);
+		driver.switchTo().alert().dismiss();
+		//dismissAlertBoxes("");
 		return this;
 	}
 
 	public CreateConflict clickOnStaticText() throws InterruptedException {
 		logger.info("Let's click on static text to skip the quick guide");
-		waitAndClickElement(TEXT,2);
-		waitAndClickElement(CONFLICT_TEXT,2);
-		waitAndClickElement(SHARED_DECISIONS,2);
-		waitAndClickElement(COMMUNITY_COFLICT_TEXT,2);
-		waitAndClickElement(LEARNING,2);
+		waitAndClickElement(TEXT,5);
+		waitAndClickElement(CONFLICT_TEXT,5);
+		waitAndClickElement(SHARED_DECISIONS,5);
+		waitAndClickElement(COMMUNITY_COFLICT_TEXT,5);
+		waitAndClickElement(LEARNING,5);
+		waitAndClickElement(SHARE,5);
+		waitAndClickElement(MESSENGING_INTERFACE,5);
 		return this;
 	}
 

@@ -12,15 +12,15 @@ public class MyConflitPageForSomeElse extends BasePage {
     private static final By STEP_2B_SOMEONE = MobileBy.AccessibilityId("Step 2b " + Harmony.get("Someone else") + "\'s " + "Decision");
     private static final By STEP_2B_THEIR = MobileBy.AccessibilityId("Step 2b Their Decision");
     private static final By SOMEONE_SOLUTION_BOX = MobileBy.AccessibilityId("What conflicting ACTION could've prevented your problem?");
-    private static final By SOMEONE_ALTERNATIVE_BOX = MobileBy.AccessibilityId("What ACTION caused your problem?");
+    private static final By SOMEONE_ALTERNATIVE_BOX = MobileBy.AccessibilityId("What ACTION do you believe caused your problem?");
     private static final By SOMEONE_GOAL = MobileBy.AccessibilityId("What is " + Harmony.get("Someone else") +"\'s" +" GOAL which they desire most?");
     private static final By MYSELF_GOAL = MobileBy.AccessibilityId("What is Your GOAL which You desire most?");
     private static final By SOMEONE_THREAT = MobileBy.AccessibilityId("What is the THREAT to " + Harmony.get("Someone else") +  "\'s "  + "GOAL they fear most?");
     private static final By MYSELF_THREAT = MobileBy.AccessibilityId("What is the THREAT to Your GOAL You fear most?");
     private static final By SOMEONE_UNIQUE_PROS = MobileBy.AccessibilityId("What are the unique PROS of CHANGE?");
     private static final By SOMEONE_UNIQUE_CONS = MobileBy.AccessibilityId("What are the unique CONS of CHANGE?");
-    private static final By SOMEONE_ALTERNATIVE_PROS = MobileBy.AccessibilityId("What are the unique PROS of NOT CHANGE?");
-    private static final By SOMEONE_ALTERNATIVE_CONS = MobileBy.AccessibilityId("What are the unique CONS of NOT CHANGE?");
+    private static final By SOMEONE_ALTERNATIVE_PROS = MobileBy.AccessibilityId("What are the unique PROS of NO CHANGE?");
+    private static final By SOMEONE_ALTERNATIVE_CONS = MobileBy.AccessibilityId("What are the unique CONS of NO CHANGE?");
 
     public MyConflitPageForSomeElse(String blame) {
         if(blame.equalsIgnoreCase("someone")) {
@@ -157,6 +157,14 @@ public class MyConflitPageForSomeElse extends BasePage {
         String myValues = TestUtils.randomValues();
         enterValueinBoxes(MYSELF_THREAT, myValues, "Myself Threat");
         clickElement(NEXT);
+        return this;
+    }
+
+    public MyConflitPageForSomeElse dismissCongratulation() throws InterruptedException {
+        syncAction(5000);
+        dismissAlertBoxes("Congratulations");
+        syncAction(5000);
+        dismissAlertBoxes("Are you sure?");
         return this;
     }
 

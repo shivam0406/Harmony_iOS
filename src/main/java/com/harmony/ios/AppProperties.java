@@ -8,7 +8,7 @@ import java.util.Properties;
 
 public class AppProperties {
 
-	private static final String PROPERTY_FILE_PATH = "./src/test/resources/config/";
+	private static final String PROPERTY_FILE_PATH = "/Users/shivamgupta/Desktop/Harmony/iOSAutomation/src/test/resources/config/";
 
 	//Default values
 	private String PLATFORM_NAME = "iOS";

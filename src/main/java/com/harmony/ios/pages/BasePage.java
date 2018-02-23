@@ -3,16 +3,18 @@ package com.harmony.ios.pages;
 import com.harmony.ios.exceptions.PageNotCurrentException;
 import com.harmony.ios.utils.TestUtils;
 import com.harmony.ios.utils.WebDriverFactory;
+import com.sun.xml.internal.rngom.parse.host.Base;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.ios.IOSDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -75,6 +77,16 @@ public class BasePage {
 	public void waitAndClickElement(By locator, int waitTimeInSec) {
 		WebElement element = waitAndFindElement(locator, waitTimeInSec);;
 		element.click();
+	}
+
+	public void dismissAlertBoxes(String text) {
+		Assert.assertTrue(driver.switchTo().alert().getText().contains(text));
+		driver.switchTo().alert().dismiss();
+	}
+
+	public void allowAlertBoxes(String text) {
+		Assert.assertTrue(driver.switchTo().alert().getText().contains(text));
+		driver.switchTo().alert().accept();
 	}
 
 	public BasePage syncAction(long milliSec) throws InterruptedException {
@@ -143,6 +155,7 @@ public class BasePage {
 		clickElement(locator);
 		Assert.assertTrue(Harmony.get(key).matches(getText(TEXT_VIEW)), message);
 		clickElement(TEXT_VIEW);
+		clickElement(DONE);
 		return this;
 	}
 
@@ -161,5 +174,29 @@ public class BasePage {
 		return this;
 	}
 
+	public BasePage swipeLeft() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		HashMap scrollObject = new HashMap();
+		scrollObject.put("direction", "left");
+		js.executeScript("mobile: swipe", scrollObject);
+		return this;
+	}
 
+	public BasePage swipeDown() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		HashMap scrollObject = new HashMap();
+		scrollObject.put("direction", "down");
+		js.executeScript("mobile: swipe", scrollObject);
+		return this;
+	}
+
+	public BasePage getPageIndicatorValue(By locator, String value) {
+		Assert.assertEquals(driver.findElement(locator).getAttribute("value"), value, "Both Attributes value matched");
+		return this;
+	}
+
+	public BasePage containTextUsingAttribute(By locator, String value) {
+		Assert.assertTrue(driver.findElement(locator).getAttribute("value").contains(value), "Attribute value matched");
+		return this;
+	}
 }

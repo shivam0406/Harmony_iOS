@@ -9,8 +9,8 @@ public class MyConflictPage extends BasePage {
 
 	final static Logger logger = Logger.getLogger(MyConflictPage.class);
 
-	private static final By SOLUTION_BOX = MobileBy.AccessibilityId("What ACTION will solve your problem?");
-	private static final By ALTERNATIVE_BOX = MobileBy.AccessibilityId("What is the conflicting STATUS QUO (Current way) or OTHER Change?");
+	private static final By SOLUTION_BOX = MobileBy.AccessibilityId("WHAT must YOU CHANGE to solve/better deal with your problem?");
+	private static final By ALTERNATIVE_BOX = MobileBy.AccessibilityId("What do YOU do INSTEAD that is in conflict with this needed CHANGE?");
 	private static final By MY_GOAL = MobileBy.AccessibilityId("What is YOUR GOAL that you desire most?");
 	private static final By MY_THREAT = MobileBy.AccessibilityId("What is the THREAT to YOUR GOAL that you fear most?");
 	private static final By STEP_2A_PAGE = MobileBy.AccessibilityId("Step 2a MyDecision");
@@ -23,8 +23,8 @@ public class MyConflictPage extends BasePage {
 	private static final By BLAME_BOX_TEXT_EDIT = MobileBy.xpath("//XCUIElementTypeApplication[@name=\"HDM\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField");
 	private static final By UNIQUE_PROS = MobileBy.AccessibilityId("What are the unique PROS of the CHANGE?");
 	private static final By UNIQUE_CONS = MobileBy.AccessibilityId("What are the unique CONS of CHANGE?");
-	private static final By ALTERNATIVE_PROS = MobileBy.AccessibilityId("What are the unique PROS of NOT CHANGE?");
-	private static final By ALTERNATIVE_CONS = MobileBy.AccessibilityId("What are the unique CONS of NOT CHANGE/OTHER?");
+	private static final By ALTERNATIVE_PROS = MobileBy.AccessibilityId("What are the unique PROS of NO CHANGE?");
+	private static final By ALTERNATIVE_CONS = MobileBy.AccessibilityId("What are the unique CONS of NO CHANGE?");
 
 	public MyConflictPage() {
 		assertCurrentPage(STEP_2A_PAGE);
@@ -132,6 +132,14 @@ public class MyConflictPage extends BasePage {
 		waitForPresence(BLAME_NAME_BOX);
 		String myValues = TestUtils.randomValues();
 		enterValueinBoxes(BLAME_BOX_TEXT_EDIT, myValues, "Someone else") ;
+		return this;
+	}
+
+	public MyConflictPage dismissCongratulation() throws InterruptedException {
+        syncAction(5000);
+		dismissAlertBoxes("Congratulations");
+        syncAction(5000);
+        dismissAlertBoxes("Are you sure?");
 		return this;
 	}
 }

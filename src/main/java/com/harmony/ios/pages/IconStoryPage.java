@@ -9,7 +9,7 @@ public class IconStoryPage extends BasePage {
 
     final static Logger logger = Logger.getLogger(IconStoryPage.class);
 
-    private static final By ICON_STORY = MobileBy.AccessibilityId("iconStory");
+    private static final By ICON_STORY = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeTable[1]/XCUIElementTypeCell[1]/XCUIElementTypeButton[1]");
     private static final By STORY_PAGE = MobileBy.AccessibilityId("Your Story on One Page");
     private static final By STEP_2_B = MobileBy.AccessibilityId("Step 2b Their Decision");
     private static final By STEP_1_MY_PROBLEM = MobileBy.AccessibilityId("Step 1 My Problem");
@@ -35,16 +35,24 @@ public class IconStoryPage extends BasePage {
     private static final By SOMEONE_ALTERNATIVE_PRO_TEXT = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeScrollView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]");
     private static final By SOMEONE_ALTERNATIVE_CONS_TEXT = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeScrollView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[7]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]");
     private static final By SOMEONE_GOAL_TEXT = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeScrollView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]");
-    private static final By SOMEONE_THREAT_TEXT = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeScrollView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[9]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]");
+    private static final By SOMEONE_THREAT_TEXT = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeScrollView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[9]");
     private static final By HOME_ICON = MobileBy.AccessibilityId("home icon");
+    private static final By ENABLE_CONFLICT_OPTIONS = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeTable[1]/XCUIElementTypeCell[1]/XCUIElementTypeStaticText[1]");
 
     public IconStoryPage() {
-        assertCurrentPage(ICON_STORY);
+        //assertCurrentPage(ENABLE_CONFLICT_OPTIONS);
     }
 
     public IconStoryPage moveToStory() {
         logger.info("Let's move to Story page");
-        clickElement(ICON_STORY);
+        if(isElementPresent(ICON_STORY)){
+            logger.info("Yes, Conflict details are open");
+            clickElement(ICON_STORY);
+        }
+        else {
+            waitAndClickElement(ENABLE_CONFLICT_OPTIONS, 5);
+            waitAndClickElement(ICON_STORY, 5);
+        }
         return this;
     }
 
