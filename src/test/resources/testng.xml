@@ -1,54 +1,60 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Harmony Test suite" allow-return-values="true"  guice-stage=""   >
+<suite name="Harmony Test suite" allow-return-values="true" >
     <test name="Harmony" preserve-order="true" allow-return-values="true" >
         <classes>
             <!--<class name="com.harmony.ios.Launch.End2EndTest">-->
-                <!--<methods>-->
-                    <!--<include name="Login"/>-->
-                    <!--<include name="Create_Conflict"/>-->
-                    <!--<include name="enterMyProblem"/>-->
-                    <!--<include name="enterMyConflict"/>-->
-                    <!--<include name="enterMyResolutionOption1"/>-->
-                    <!--<include name="enterMyResolutionOption2"/>-->
-                    <!--<include name="enterMyResolutionOption3"/>-->
-                    <!--<include name="enterMyResolutionOption4"/>-->
-                    <!--<include name="chooseResolution"/>-->
-                    <!--<include name="Planning"/>-->
-                    <!--<include name="Experiment"/>-->
-                    <!--<include name="StoryVerify"/>-->
-                    <!--<include name="shareConflict"/>-->
-                <!--</methods>-->
+            <!--<methods>-->
+            <!--<include name="Login"/>-->
+            <!--<include name="Create_Conflict"/>-->
+            <!--<include name="enterMyProblem"/>-->
+            <!--<include name="enterMyConflict"/>-->
+            <!--<include name="enterMyResolutionOption1"/>-->
+            <!--<include name="enterMyResolutionOption2"/>-->
+            <!--<include name="enterMyResolutionOption3"/>-->
+            <!--<include name="enterMyResolutionOption4"/>-->
+            <!--<include name="chooseResolution"/>-->
+            <!--<include name="Planning"/>-->
+            <!--<include name="Experiment"/>-->
+            <!--<include name="StoryVerify"/>-->
+            <!--<include name="shareConflict"/>-->
+            <!--<include name="verifyAllOptionsOnHome"/>-->
+            <!--<include name="deleteConflict"/>-->
+            <!--</methods>-->
             <!--</class>-->
-            <class name="com.harmony.ios.Launch.End2EndTestWithBlameSomeOne">
-            <methods>
-                 <include name="test"/>
-                <include name="test2"/>
-                <include name="test3"/>
-                <include name="test4"/>
-                <include name="test5"/>
-                <include name="test6"/>
-                <include name="test7"/>
-                <include name="test8"/>
-                <include name="test9"/>
-                <include name="test10"/>
-                <include name="test11"/>
-                <include name="test12"/>
-            </methods>
-            </class>
-
-            <!--<class name="com.harmony.ios.Launch.End2EndWithBlameMySelf">-->
+            <!--<class name="com.harmony.ios.Launch.End2EndTestWithBlameSomeOne">-->
             <!--<methods>-->
             <!--<include name="test"/>-->
             <!--<include name="test2"/>-->
             <!--<include name="test3"/>-->
             <!--<include name="test4"/>-->
-                <!--<include name="test5"/>-->
-                <!--<include name="test6"/>-->
-                <!--<include name="test7"/>-->
-                <!--<include name="test8"/>-->
+            <!--<include name="test5"/>-->
+            <!--<include name="test6"/>-->
+            <!--<include name="test7"/>-->
+            <!--<include name="test8"/>-->
+            <!--<include name="test9"/>-->
+            <!--<include name="test10"/>-->
+            <!--<include name="test11"/>-->
+            <!--<include name="test12"/>-->
             <!--</methods>-->
             <!--</class>-->
+
+            <class name="com.harmony.ios.Launch.End2EndWithBlameMySelf">
+            <methods>
+            <include name="test"/>
+            <include name="test2"/>
+            <include name="test3"/>
+            <include name="test4"/>
+            <include name="test5"/>
+            <include name="test6"/>
+            <include name="test7"/>
+            <include name="test8"/>
+            </methods>
+            </class>
+            <!--<class name="com.harmony.ios.Launch.HomeScreenVerification"/>-->
+            <!--<class name="com.harmony.ios.Launch.ProConCloudVerification"/>-->
+            <!--<class name="com.harmony.ios.Launch.HomeScreenTestDrive"/>-->
+            <!--<class name="com.harmony.ios.Launch.TabBarVerification"/>-->
         </classes>
     </test>
 

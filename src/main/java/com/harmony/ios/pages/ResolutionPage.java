@@ -1,5 +1,6 @@
 package com.harmony.ios.pages;
 
+import com.harmony.ios.utils.TestUtils;
 import io.appium.java_client.MobileBy;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -33,6 +34,23 @@ public class ResolutionPage extends BasePage {
 	private static final By PLUS_CONDITION_FOR_NOT_CHANGE = MobileBy.AccessibilityId("+ Conditions for NO CHANGE?");
 	private static final By PLUS_CONDITION_FOR_CHANGE_TEXT = MobileBy.xpath("//XCUIElementTypeCell[1]/XCUIElementTypeTextView");
 	private static final By PLUS_CONDITION_FOR_NOT_CHANGE_TEXT = MobileBy.xpath("//XCUIElementTypeCell[2]/XCUIElementTypeTextView");
+
+	private static final By STEP3B = MobileBy.AccessibilityId("Step 3b");
+	private static final By OPTION_1_ADVANCED_RESOLUTION = MobileBy.AccessibilityId("Option 1 - Advanced Resolution");
+
+	private static final By ASSUMPTION = MobileBy.AccessibilityId("ASSUMPTION");
+	private static final By INJECTION = MobileBy.AccessibilityId("INJECTION");
+	private static final By HOW_TO = MobileBy.AccessibilityId("HOW TO");
+
+	private static final By ASSUMPTION_1_TEXT_FIELD = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeScrollView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTextView[1]/XCUIElementTypeStaticText[1]");
+	private static final By INJECTION_1_TEXT_FIELD = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeScrollView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeTextView[1]/XCUIElementTypeStaticText[1]");
+	private static final By HOW_TO_1_TEXT_FIELD = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeScrollView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[3]/XCUIElementTypeTextView[1]/XCUIElementTypeStaticText[1]");
+
+	private static final By ASSUMPTION_2_TEXT_FIELD = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeScrollView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeTextView[1]/XCUIElementTypeStaticText[1]");
+	private static final By INJECTION_2_TEXT_FIELD = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeScrollView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeTextView[1]/XCUIElementTypeStaticText[1]");
+	private static final By HOW_TO_2_TEXT_FIELD = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeScrollView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeTextView[1]/XCUIElementTypeStaticText[1]");
+
+
 
 
 
@@ -204,9 +222,11 @@ public class ResolutionPage extends BasePage {
 	public ResolutionPage clickOnAdvancedResolution() throws InterruptedException {
 		clickElement(ADVANCED_RESOLUTION);
 		syncAction(2000);
-		done();
+		//done();
 		return this;
 	}
+
+
 
 	public ResolutionPage verifyResolutionBox() {
 		assertCurrentPage(RESOLTION_BOX);
@@ -290,6 +310,62 @@ public class ResolutionPage extends BasePage {
 
 	public ResolutionPage resolveOption4() {
 		done();
+		return this;
+	}
+
+
+	public ResolutionPage mySelfAdvancedResolutionOption1() throws InterruptedException {
+		assertCurrentPage(STEP3B);
+		assertCurrentPage(OPTION_1_ADVANCED_RESOLUTION);
+		enterDataInAssumption1("Option1 Assumption1");
+		enterDataInInjection1("Option1 Injection1");
+		enterDataInHowTo1("Option1 HowTo1");
+		enterDataInAssumption2("Option1 Assumption2");
+		enterDataInInjection2("Option1 Injection2");
+		enterDataInHowTo2("Option1 HowTo2");
+		done();
+		return this;
+	}
+
+	public ResolutionPage enterDataInAssumption1(String key) throws InterruptedException {
+		logger.info("Enter Options 1 Assumption");
+		String myValues = TestUtils.randomValues();
+		enterValueinBoxesWithoutDone(ASSUMPTION_1_TEXT_FIELD, myValues, key);
+		return this;
+	}
+
+	public ResolutionPage enterDataInInjection1(String key) throws InterruptedException {
+		logger.info("Enter Options 1 Assumption");
+		String myValues = TestUtils.randomValues();
+		enterValueinBoxesWithoutDone(INJECTION_1_TEXT_FIELD, myValues, key);
+		return this;
+	}
+
+	public ResolutionPage enterDataInHowTo1(String key) throws InterruptedException {
+		logger.info("Enter Options 1 Assumption");
+		String myValues = TestUtils.randomValues();
+		enterValueinBoxesWithoutDone(HOW_TO_1_TEXT_FIELD, myValues, key);
+		return this;
+	}
+
+	public ResolutionPage enterDataInAssumption2(String key) throws InterruptedException {
+		logger.info("Enter Options Assumption2");
+		String myValues = TestUtils.randomValues();
+		enterValueinBoxesWithoutDone(ASSUMPTION_2_TEXT_FIELD, myValues, key);
+		return this;
+	}
+
+	public ResolutionPage enterDataInInjection2(String key) throws InterruptedException {
+		logger.info("Enter Options Injection 2");
+		String myValues = TestUtils.randomValues();
+		enterValueinBoxesWithoutDone(INJECTION_2_TEXT_FIELD, myValues, key);
+		return this;
+	}
+
+	public ResolutionPage enterDataInHowTo2(String key) throws InterruptedException {
+		logger.info("Enter Options  HOW to 2");
+		String myValues = TestUtils.randomValues();
+		enterValueinBoxesWithoutDone(HOW_TO_2_TEXT_FIELD, myValues, key);
 		return this;
 	}
 

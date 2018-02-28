@@ -21,7 +21,7 @@ public class HomeScreenVerification extends iOSBaseTest {
 
     @Test
     public void test() throws InterruptedException {
-        HomeScreenHelpVerification homeScreenHelpVerification = new HomeScreenHelpVerification();
+        HomeScreenHelpVerification homeScreenHelpVerification = new HomeScreenHelpVerification("apply assertion");
         homeScreenHelpVerification
                 .goLeft("page 2 of 7")
                 .step1(1)

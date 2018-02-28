@@ -13,7 +13,9 @@ public class HomeScreenHelpVerification extends BasePage {
     private static final By SIGN_IN = MobileBy.AccessibilityId("SIGN IN");
     private static final By SIGN_UP = MobileBy.AccessibilityId("SIGN UP");
     private static final By ON_B1OARDING1 = MobileBy.AccessibilityId("onboarding_1");
+    private static final By HELP_BUTTON_2 = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeButton[1]");
     private static final By PAGE_INDICATOR = MobileBy.xpath("//XCUIElementTypeApplication[@name=\"HDM\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypePageIndicator");
+    private static final By PAGE_INDICATOR2= MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypePageIndicator[1]");
     private static final By HELP_BUTTON = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]");
     private static final By CLOSE_BUTTON = MobileBy.AccessibilityId("icon grey cross");
     private static final By STEP_1_THE_WHY = MobileBy.AccessibilityId("Step 1 – The Why…");
@@ -62,12 +64,17 @@ public class HomeScreenHelpVerification extends BasePage {
     private static final By JUST_DO_IT_THE_HOW_PERSONAL = MobileBy.AccessibilityId("Just do it – The How… (Home Example)");
 
 
-    public HomeScreenHelpVerification() {
-        assertCurrentPage(SIGN_IN);
-        assertCurrentPage(SIGN_UP);
-        assertCurrentPage(ON_B1OARDING1);
-        assertCurrentPage(PAGE_INDICATOR);
-        getPageIndicatorValue(PAGE_INDICATOR, "page 1 of 7");
+    public HomeScreenHelpVerification(String name) {
+        if(name.equalsIgnoreCase("tabbar")) {
+            logger.info("No assertion applicable");
+        }
+        else {
+            assertCurrentPage(SIGN_IN);
+            assertCurrentPage(SIGN_UP);
+            assertCurrentPage(ON_B1OARDING1);
+            assertCurrentPage(PAGE_INDICATOR);
+            getPageIndicatorValue(PAGE_INDICATOR, "page 1 of 7");
+        }
     }
 
     public HomeScreenHelpVerification onPageNumber(By locator, String value) {
@@ -78,15 +85,27 @@ public class HomeScreenHelpVerification extends BasePage {
     public HomeScreenHelpVerification goLeft(String value) {
         logger.info("Let's go to left");
          swipeLeft();
-         getPageIndicatorValue(PAGE_INDICATOR, value);
+         if(isElementPresent(PAGE_INDICATOR)) {
+             getPageIndicatorValue(PAGE_INDICATOR, value);
+         }
+         else {
+             getPageIndicatorValue(PAGE_INDICATOR2, value);
+         }
          return this;
     }
 
     public HomeScreenHelpVerification step1(int slide) {
         logger.info("We are on 1 Page");
-        assertCurrentPage(HELP_BUTTON);
-        //assertCurrentPage(ON_BOARDING2);
-        clickElement(HELP_BUTTON);
+        if(isElementPresent(HELP_BUTTON)) {
+            assertCurrentPage(HELP_BUTTON);
+            //assertCurrentPage(ON_BOARDING2);
+            clickElement(HELP_BUTTON);
+        }
+        else {
+            assertCurrentPage(HELP_BUTTON_2);
+            //assertCurrentPage(ON_BOARDING2);
+            clickElement(HELP_BUTTON_2);
+        }
         if(slide == 1) {
             step1Slide1();
         }
@@ -110,6 +129,14 @@ public class HomeScreenHelpVerification extends BasePage {
         logger.info("Let's go to left");
         swipeLeft();
         getPageIndicatorValue(loctor, value);
+        return this;
+    }
+
+    public HomeScreenHelpVerification goLeftWithLocatorWithAssertion(By loctor, String value, By element) {
+        logger.info("Let's go to left");
+        swipeLeft();
+        getPageIndicatorValue(loctor, value);
+        assertCurrentPage(element);
         return this;
     }
 
@@ -151,9 +178,16 @@ public class HomeScreenHelpVerification extends BasePage {
 
     public HomeScreenHelpVerification step2(int slide) {
         logger.info("We are on 2 Page");
-        assertCurrentPage(HELP_BUTTON);
-        //assertCurrentPage(ON_BOARDING3);
-        clickElement(HELP_BUTTON);
+        if(isElementPresent(HELP_BUTTON)) {
+            assertCurrentPage(HELP_BUTTON);
+            //assertCurrentPage(ON_BOARDING2);
+            clickElement(HELP_BUTTON);
+        }
+        else {
+            assertCurrentPage(HELP_BUTTON_2);
+            //assertCurrentPage(ON_BOARDING2);
+            clickElement(HELP_BUTTON_2);
+        }
         if(slide == 1) {
             step2Slide1();
         }
@@ -210,9 +244,16 @@ public class HomeScreenHelpVerification extends BasePage {
 
     public HomeScreenHelpVerification step3(int slide) {
         logger.info("We are on 3 Page");
-        assertCurrentPage(HELP_BUTTON);
-     //   assertCurrentPage(ON_BOARDING4);
-        clickElement(HELP_BUTTON);
+        if(isElementPresent(HELP_BUTTON)) {
+            assertCurrentPage(HELP_BUTTON);
+            //assertCurrentPage(ON_BOARDING2);
+            clickElement(HELP_BUTTON);
+        }
+        else {
+            assertCurrentPage(HELP_BUTTON_2);
+            //assertCurrentPage(ON_BOARDING2);
+            clickElement(HELP_BUTTON_2);
+        }
         if(slide == 1) {
             step3Slide1();
         }
@@ -257,9 +298,16 @@ public class HomeScreenHelpVerification extends BasePage {
 
     public HomeScreenHelpVerification step4(int slide) {
         logger.info("We are on 3 Page");
-        assertCurrentPage(HELP_BUTTON);
-     //   assertCurrentPage(ON_BOARDING5);
-        clickElement(HELP_BUTTON);
+        if(isElementPresent(HELP_BUTTON)) {
+            assertCurrentPage(HELP_BUTTON);
+            //assertCurrentPage(ON_BOARDING2);
+            clickElement(HELP_BUTTON);
+        }
+        else {
+            assertCurrentPage(HELP_BUTTON_2);
+            //assertCurrentPage(ON_BOARDING2);
+            clickElement(HELP_BUTTON_2);
+        }
         if(slide == 1) {
             step4Slide1();
         }
@@ -319,9 +367,16 @@ public class HomeScreenHelpVerification extends BasePage {
 
     public HomeScreenHelpVerification step5(int slide) {
         logger.info("We are on 5 Page");
-        assertCurrentPage(HELP_BUTTON);
-        //   assertCurrentPage(ON_BOARDING5);
-        clickElement(HELP_BUTTON);
+        if(isElementPresent(HELP_BUTTON)) {
+            assertCurrentPage(HELP_BUTTON);
+            //assertCurrentPage(ON_BOARDING2);
+            clickElement(HELP_BUTTON);
+        }
+        else {
+            assertCurrentPage(HELP_BUTTON_2);
+            //assertCurrentPage(ON_BOARDING2);
+            clickElement(HELP_BUTTON_2);
+        }
         if(slide == 1) {
             step5Slide1();
         }
@@ -379,9 +434,16 @@ public class HomeScreenHelpVerification extends BasePage {
 
     public HomeScreenHelpVerification step6(int slide) {
         logger.info("We are on 6 Page");
-        assertCurrentPage(HELP_BUTTON);
-        //   assertCurrentPage(ON_BOARDING5);
-        clickElement(HELP_BUTTON);
+        if(isElementPresent(HELP_BUTTON)) {
+            assertCurrentPage(HELP_BUTTON);
+            //assertCurrentPage(ON_BOARDING2);
+            clickElement(HELP_BUTTON);
+        }
+        else {
+            assertCurrentPage(HELP_BUTTON_2);
+            //assertCurrentPage(ON_BOARDING2);
+            clickElement(HELP_BUTTON_2);
+        }
         if(slide == 1) {
             step6Slide1();
         }

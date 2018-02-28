@@ -80,9 +80,10 @@ public class CreateConflict extends BasePage {
 		return this;
 	}
 
-	public CreateConflict dontAllowAlert() {
+	public CreateConflict dontAllowAlert() throws InterruptedException {
 		logger.info("Let's Not allow the alert");
 		//waitAndClickElement(DONT_ALLOW,60);
+		syncAction(5000);
 		driver.switchTo().alert().dismiss();
 		//dismissAlertBoxes("");
 		return this;

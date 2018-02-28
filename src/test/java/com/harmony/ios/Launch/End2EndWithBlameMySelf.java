@@ -58,7 +58,8 @@ public class End2EndWithBlameMySelf extends iOSBaseTest {
                 .enterMyselfAlternativeProsInBox()
                 .enterMyselfAlternativeConsInBox()
                 .enterMyselfGoalInBox()
-                .enterMyselfThreatInBox();
+                .enterMyselfThreatInBox()
+                .dismissCongratulation();
     }
 
     @Test
@@ -75,8 +76,8 @@ public class End2EndWithBlameMySelf extends iOSBaseTest {
                 .goToNext();
         resolutionPage
                 .verifyResolutionBox()
-                .clickOnSimpleResolution()
-                .myselfResolutionOption1()
+                .clickOnAdvancedResolution()
+                .mySelfAdvancedResolutionOption1()
                 .verifyStillStuck()
                 .goToNext();
     }
@@ -115,8 +116,8 @@ public class End2EndWithBlameMySelf extends iOSBaseTest {
                 .goToNext();
         resolutionPage
                 .verifyResolutionBox()
-                .clickOnSimpleResolution()
-                .myselfResolveOption3()
+                .clickOnAdvancedResolution()
+                .mySelfAdvancedResolutionOption1()
                 .verifyStillStuck()
                 .goToNext();
     }
@@ -141,7 +142,7 @@ public class End2EndWithBlameMySelf extends iOSBaseTest {
 
 
     @Test
-    public void test8() {
+    public void test8() throws InterruptedException {
         ChooseResolutionOptionPage chooseResolutionOptionPage = new ChooseResolutionOptionPage();
         chooseResolutionOptionPage
 //				.Option1()
@@ -152,7 +153,8 @@ public class End2EndWithBlameMySelf extends iOSBaseTest {
 //                .matchChangeText()
 //				.clickIcon2()
 //				.matchNotChangeText()
-                .selectRadioButton();
+                .selectRadioButton()
+                .dismissCongratulation();
 
     }
 
