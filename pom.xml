@@ -14,11 +14,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <testng.version>6.9.10</testng.version>
-        <selenium.version>3.0.1</selenium.version>
+        <selenium.version>3.6</selenium.version>
         <surefire.version>2.19.1</surefire.version>
         <maven.compiler.version>3.6.1</maven.compiler.version>
-        <java-client>4.1.2</java-client>
-        <aspectj.version>1.8.5</aspectj.version>
+        <java-client>5.0.4</java-client>
+        <aspectj.version>1.8.11</aspectj.version>
         <allure.version>2.5</allure.version>
 
     </properties>
@@ -32,12 +32,12 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>${selenium.version}</version>
+            <version>3.6.0</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-api</artifactId>
-            <version>${selenium.version}</version>
+            <version>3.6.0</version>
             <scope>compile</scope>
         </dependency>
 
@@ -45,7 +45,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-remote-driver</artifactId>
-            <version>${selenium.version}</version>
+            <version>3.6.0</version>
         </dependency>
         <dependency>
             <groupId>io.appium</groupId>

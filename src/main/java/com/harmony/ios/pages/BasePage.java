@@ -79,6 +79,12 @@ public class BasePage {
 		element.click();
 	}
 
+	public void getKeyBoardAndHide(String value) throws InterruptedException {
+		driver.getKeyboard().sendKeys(value);
+		syncAction(5000);
+		driver.hideKeyboard();
+	}
+
 	public void dismissAlertBoxes(String text) {
 		Assert.assertTrue(driver.switchTo().alert().getText().contains(text));
 		driver.switchTo().alert().dismiss();
@@ -139,7 +145,7 @@ public class BasePage {
 
 	public BasePage enterValueinBoxesWithoutDone(By locator, String value, String nameOfBox) throws InterruptedException {
 		logger.info("Enter Value in " +nameOfBox+ " Box");
-		setValues(locator, value);
+			setValueswithHideKeyboard(locator, value);
 		syncAction(2000);
 		Harmony.put(nameOfBox, value);
 		return this;
@@ -170,7 +176,7 @@ public class BasePage {
 	}
 
 	public BasePage refreshPage(){
-		driver.swipe(200,200,200,700,3);
+		//driver.swipe(200,200,200,700,3);
 		return this;
 	}
 
@@ -190,6 +196,14 @@ public class BasePage {
 		return this;
 	}
 
+	public BasePage scrollDown() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		HashMap scrollObject = new HashMap();
+		scrollObject.put("direction", "up");
+		js.executeScript("mobile: scroll", scrollObject);
+		return this;
+	}
+
 	public BasePage getPageIndicatorValue(By locator, String value) {
 		Assert.assertEquals(driver.findElement(locator).getAttribute("value"), value, "Both Attributes value matched");
 		return this;
@@ -199,4 +213,6 @@ public class BasePage {
 		Assert.assertTrue(driver.findElement(locator).getAttribute("value").contains(value), "Attribute value matched");
 		return this;
 	}
+
+
 }

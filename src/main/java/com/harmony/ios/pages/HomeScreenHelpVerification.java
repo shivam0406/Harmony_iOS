@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 
 
-
 public class HomeScreenHelpVerification extends BasePage {
 
     final static Logger logger = Logger.getLogger(AllOptionsOnHomeScreen.class);

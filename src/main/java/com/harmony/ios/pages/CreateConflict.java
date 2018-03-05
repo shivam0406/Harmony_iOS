@@ -72,10 +72,12 @@ public class CreateConflict extends BasePage {
 		return this;
 	}
 
-	public CreateConflict enterConflictValue() {
+	public CreateConflict enterConflictValue() throws InterruptedException {
 		String myValue = testUtils.randomValues();
 		logger.info("My conflict is" + " " + myValue);
-		setValueswithHideKeyboard(ENTER_VALUE, myValue);
+		driver.switchTo().alert();
+		getKeyBoardAndHide(myValue);
+		//setValueswithHideKeyboard(ENTER_VALUE, myValue);
 		Harmony.put("create_conflict",myValue);
 		return this;
 	}

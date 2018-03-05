@@ -320,6 +320,7 @@ public class ResolutionPage extends BasePage {
 		enterDataInAssumption1("Option1 Assumption1");
 		enterDataInInjection1("Option1 Injection1");
 		enterDataInHowTo1("Option1 HowTo1");
+		scrollDown();
 		enterDataInAssumption2("Option1 Assumption2");
 		enterDataInInjection2("Option1 Injection2");
 		enterDataInHowTo2("Option1 HowTo2");
