@@ -168,7 +168,7 @@ public class End2EndTest extends iOSBaseTest {
 				.Option3()
 				.Option4()
 //				.clickIcon1()
-				.matchChangeText()
+				.matchChangeText("no one")
 //				.clickIcon2()
 //				.matchNotChangeText()
 				.selectRadioButton()

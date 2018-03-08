@@ -2,10 +2,7 @@ package com.harmony.ios.Launch;
 
 import com.harmony.ios.AppProperties;
 import com.harmony.ios.iOSBaseTest;
-import com.harmony.ios.pages.ChooseResolutionOptionPage;
-import com.harmony.ios.pages.MyConflictPage;
-import com.harmony.ios.pages.MyConflitPageForSomeElse;
-import com.harmony.ios.pages.ResolutionPage;
+import com.harmony.ios.pages.*;
 import com.harmony.ios.utils.WebDriverFactory;
 import org.testng.annotations.*;
 
@@ -64,7 +61,7 @@ public class End2EndWithBlameMySelf extends iOSBaseTest {
 
     @Test
     public void test4() throws InterruptedException {
-        ResolutionPage resolutionPage = new ResolutionPage("someone");
+        ResolutionPage resolutionPage = new ResolutionPage("myself");
         resolutionPage
                 .options1()
                 .matchMyselfGoalText()
@@ -78,85 +75,113 @@ public class End2EndWithBlameMySelf extends iOSBaseTest {
                 .verifyResolutionBox()
                 .clickOnAdvancedResolution()
                 .mySelfAdvancedResolutionOption1()
-                .verifyStillStuck()
                 .goToNext();
+        resolutionPage
+                .skipResolution()
+                .skipResolution()
+                .skipResolution();
     }
+
 
     @Test
     public void test5() throws InterruptedException {
-        ResolutionPage resolutionPage = new ResolutionPage("someone");
-        resolutionPage
-                .options2()
-                .matchMyselfGoalText()
-                .matchMyselfUniqueProText()
-                .matchMyselfAlternativeProText()
-                .matchMyselfAlternativeConsText()
-                .matchMyselfAlternativeSolutionText();
-        resolutionPage
-                .goToNext();
-        resolutionPage
-                .verifyResolutionBox()
-                .clickOnSimpleResolution()
-                .myselfResolveOptions2()
-                .verifyStillStuck()
-                .goToNext();
-    }
-
-    @Test
-    public void test6() throws InterruptedException {
-        ResolutionPage resolutionPage = new ResolutionPage("someone");
-        resolutionPage
-                .options3()
-                .matchMyselfGoalText()
-                .matchMyselfUniqueProText()
-                .matchMyselfAlternativeProText()
-                .matchMyselfUniqueConsText()
-                .matchMyselfAlternativeConsText();
-        resolutionPage
-                .goToNext();
-        resolutionPage
-                .verifyResolutionBox()
-                .clickOnAdvancedResolution()
-                .mySelfAdvancedResolutionOption1()
-                .verifyStillStuck()
-                .goToNext();
-    }
-    @Test
-    public void test7() throws InterruptedException {
-        ResolutionPage resolutionPage = new ResolutionPage("someone");
-        resolutionPage
-                .options4()
-                .matchMyselfGoalText()
-                .matchMyselfUniqueProText()
-                .matchMyselfAlternativeProText()
-                .matchMyselfUniqueConsText()
-                .matchMyselfAlternativeConsText();
-        resolutionPage
-                .goToNext();
-        resolutionPage
-                .verifyResolutionBox()
-                .clickOnSimpleResolution()
-                .resolveOption4()
-                .goToNext();
-    }
-
-
-    @Test
-    public void test8() throws InterruptedException {
         ChooseResolutionOptionPage chooseResolutionOptionPage = new ChooseResolutionOptionPage();
         chooseResolutionOptionPage
-//				.Option1()
-//				.Option2()
-//				.Option3()
-//				.Option4()
-//				.clickIcon1()
-//                .matchChangeText()
-//				.clickIcon2()
-//				.matchNotChangeText()
+				.Option1()
+                .clickIcon1()
+                .matchChangeText("my self")
                 .selectRadioButton()
                 .dismissCongratulation();
-
     }
+
+    @Test
+    public void test6() {
+        TestConflictDataResolvedPage testConflictDataResolvedPage = new TestConflictDataResolvedPage("my self");
+        testConflictDataResolvedPage
+                .onConflictResolvedPage()
+                .checkStrategy()
+                .checkTactic()
+                .checkStackholders()
+                .matchMyselfTacticData()
+                .matchMyselfStrategyData();
+    }
+
+
+//    @Test
+//    public void test5() throws InterruptedException {
+//        ResolutionPage resolutionPage = new ResolutionPage("myself");
+//        resolutionPage
+//                .options2()
+//                .matchMyselfGoalText()
+//                .matchMyselfUniqueProText()
+//                .matchMyselfAlternativeProText()
+//                .matchMyselfAlternativeConsText()
+//                .matchMyselfAlternativeSolutionText();
+//        resolutionPage
+//                .goToNext();
+//        resolutionPage
+//                .verifyResolutionBox()
+//                .clickOnAdvancedResolution()
+//                .mySelfAdvancedResolutionOption2()
+//                .goToNext();
+//    }
+//
+//    @Test
+//    public void test6() throws InterruptedException {
+//        ResolutionPage resolutionPage = new ResolutionPage("myself");
+//        resolutionPage
+//                .options3()
+//                .matchMyselfGoalText()
+//                .matchMyselfUniqueProText()
+//                .matchMyselfAlternativeProText()
+//                .matchMyselfUniqueConsText()
+//                .matchMyselfAlternativeConsText();
+//        resolutionPage
+//                .goToNext();
+//        resolutionPage
+//                .verifyResolutionBox()
+//                .clickOnAdvancedResolution()
+//                .mySelfAdvancedResolutionOption3()
+//                .goToNext();
+//    }
+//    @Test
+//    public void test7() throws InterruptedException {
+//        ResolutionPage resolutionPage = new ResolutionPage("myself");
+//        resolutionPage
+//                .options4()
+//                .matchMyselfGoalText()
+//                .matchMyselfUniqueProText()
+//                .matchMyselfAlternativeProText()
+//                .matchMyselfUniqueConsText()
+//                .matchMyselfAlternativeConsText();
+//        resolutionPage
+//                .goToNext();
+//        resolutionPage
+//                .verifyResolutionBox()
+//                .clickOnAdvancedResolution()
+//                .mySelfAdvancedResolutionOption4()
+//                .goToNext();
+//    }
+//
+//
+//    @Test
+//    public void test8() throws InterruptedException {
+//        ChooseResolutionOptionPage chooseResolutionOptionPage = new ChooseResolutionOptionPage();
+//        chooseResolutionOptionPage
+////				.Option1()
+////				.Option2()
+////				.Option3()
+////				.Option4()
+////				.clickIcon1()
+////                .matchChangeText()
+////				.clickIcon2()
+////				.matchNotChangeText()
+//                .selectRadioButton()
+//                .dismissCongratulation();
+//    }
+
+
+
 
 
 

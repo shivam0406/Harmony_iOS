@@ -25,7 +25,12 @@ public class ChooseResolutionOptionPage extends BasePage{
 	private static final By RADIO_2 = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeOther[2]/XCUIElementTypeButton[3]");
 	private static final By RADIO_3 = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeOther[3]/XCUIElementTypeButton[3]");
 	private static final By RADIO_4 = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeOther[4]/XCUIElementTypeButton[3]");
-
+	private static final By O1_HT1 = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[2]/XCUIElementTypeTextView[1]");
+	private static final By O1_HT2 = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[3]/XCUIElementTypeTextView[1]");
+	private static final By O2_HT1 = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[5]/XCUIElementTypeTextView[1]");
+	private static final By O2_HT2 = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[6]/XCUIElementTypeTextView[1]");
+	private static final By O3_HT1 = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[7]/XCUIElementTypeTextView[1]");
+	private static final By O4_HT1 = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[8]/XCUIElementTypeTextView[1]");
 
 
 	public ChooseResolutionOptionPage(){
@@ -70,19 +75,42 @@ public class ChooseResolutionOptionPage extends BasePage{
 		return this;
 	}
 
-	public ChooseResolutionOptionPage matchChangeText() {
+	public ChooseResolutionOptionPage matchChangeText(String blame) {
 		String s = getText(CHANGE);
+		if(blame.equalsIgnoreCase("my self")) {
+			Assert.assertTrue(Harmony.get("Myself Solution").matches(s.trim()), "change++ text matched at Resolution page");
+			Assert.assertTrue(Harmony.get("Option1 HowTo1").matches(getText(O1_HT1)), "Options1 HowTo1 text matched");
+			Assert.assertTrue(Harmony.get("Option1 HowTo2").matches(getText(O1_HT2)), "Options1 HowTo2 text matched");
+		}
 		//String[] s1=   s.split("-");
-		Assert.assertTrue(Harmony.get("Solution").matches(s.trim()), "My Solution box values matched");
+		else {
+			Assert.assertTrue(Harmony.get("Solution").matches(s.trim()), "My Solution box values matched");
+		}
 		//matchText(CHANGE, "My Unique Solution Text Box Value Matched");
 		return this;
 	}
 
-	public ChooseResolutionOptionPage matchNotChangeText() {
+	public ChooseResolutionOptionPage matchNotChangeText(String blame) {
 		String s = getText(NOT_CHANGE);
-		String[] s1=   s.split("-");
-		Assert.assertTrue(Harmony.get("Alternative Solution").matches(s1[1].trim()), "My Solution box values matched");
+		//String[] s1=   s.split("-");
+		if(blame.equalsIgnoreCase("my self")) {
+			Assert.assertTrue(Harmony.get("Myself Alternative Solution").matches(s.trim()), "My Solution box values matched");
+			Assert.assertTrue(Harmony.get("Option2 HowTo1").matches(getText(O2_HT1)), " Option2 HowTo1 matched");
+			Assert.assertTrue(Harmony.get("Option2 HowTo2").matches(getText(O2_HT2)), " Option2 HowTo2 matched");
+		}
+
+		Assert.assertTrue(Harmony.get("Myself Alternative Solution").matches(s.trim()), "My Solution box values matched");
 		//matchText(CHANGE, "My Unique Solution Text Box Value Matched");
+		return this;
+	}
+
+	public ChooseResolutionOptionPage matchOption3Text() {
+		Assert.assertTrue(Harmony.get("Option3 HowTo1").matches(getText(O3_HT1)), "Option3 HowTo1 Twxt mathced");
+		return this;
+	}
+
+	public ChooseResolutionOptionPage matchOption4Text() {
+		Assert.assertTrue(Harmony.get("Option4 HowTo1").matches(getText(O4_HT1)), "Option4 HowTo1 Twxt mathced");
 		return this;
 	}
 

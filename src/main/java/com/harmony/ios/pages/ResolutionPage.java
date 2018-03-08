@@ -4,7 +4,9 @@ import com.harmony.ios.utils.TestUtils;
 import io.appium.java_client.MobileBy;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+
 import org.testng.Assert;
+
 
 
 public class ResolutionPage extends BasePage {
@@ -22,6 +24,7 @@ public class ResolutionPage extends BasePage {
 	private static final By RESOLTION_BOX = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]");
 	private static final By SIMPLE_RESOLUTION = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]");
 	private static final By ADVANCED_RESOLUTION = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeButton[1]");
+	private static final By SKIP = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeButton[1]");
 	private static final By OPTION_1 = MobileBy.AccessibilityId("Option 1 : CHANGE++");
 	private static final By OPTION_2 = MobileBy.AccessibilityId("Option 2 : NOT CHANGE++");
 	private static final By OPTION_3 = MobileBy.AccessibilityId("Option 3 : WHEN + WHEN NOT");
@@ -37,11 +40,15 @@ public class ResolutionPage extends BasePage {
 
 	private static final By STEP3B = MobileBy.AccessibilityId("Step 3b");
 	private static final By OPTION_1_ADVANCED_RESOLUTION = MobileBy.AccessibilityId("Option 1 - Advanced Resolution");
+    private static final By OPTION_2_ADVANCED_RESOLUTION = MobileBy.AccessibilityId("Option 2 - Advanced Resolution");
+    private static final By OPTION_3_ADVANCED_RESOLUTION = MobileBy.AccessibilityId("Option 3 - Advanced Resolution");
+    private static final By OPTION_4_ADVANCED_RESOLUTION = MobileBy.AccessibilityId("Option 4 - Advanced Resolution");
 
 	private static final By ASSUMPTION = MobileBy.AccessibilityId("ASSUMPTION");
 	private static final By INJECTION = MobileBy.AccessibilityId("INJECTION");
 	private static final By HOW_TO = MobileBy.AccessibilityId("HOW TO");
 
+	private static final By GO_UP = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeScrollView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]");
 	private static final By ASSUMPTION_1_TEXT_FIELD = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeScrollView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTextView[1]/XCUIElementTypeStaticText[1]");
 	private static final By INJECTION_1_TEXT_FIELD = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeScrollView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeTextView[1]/XCUIElementTypeStaticText[1]");
 	private static final By HOW_TO_1_TEXT_FIELD = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeScrollView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[3]/XCUIElementTypeTextView[1]/XCUIElementTypeStaticText[1]");
@@ -317,16 +324,51 @@ public class ResolutionPage extends BasePage {
 	public ResolutionPage mySelfAdvancedResolutionOption1() throws InterruptedException {
 		assertCurrentPage(STEP3B);
 		assertCurrentPage(OPTION_1_ADVANCED_RESOLUTION);
+        enterDataInAssumption2("Option1 Assumption2");
+        enterDataInInjection2("Option1 Injection2");
+        enterDataInHowTo2("Option1 HowTo2");
+        waitAndClickElement(GO_UP, 5);
 		enterDataInAssumption1("Option1 Assumption1");
 		enterDataInInjection1("Option1 Injection1");
 		enterDataInHowTo1("Option1 HowTo1");
-		scrollDown();
-		enterDataInAssumption2("Option1 Assumption2");
-		enterDataInInjection2("Option1 Injection2");
-		enterDataInHowTo2("Option1 HowTo2");
 		done();
 		return this;
 	}
+
+
+    public ResolutionPage mySelfAdvancedResolutionOption2() throws InterruptedException {
+        assertCurrentPage(STEP3B);
+        assertCurrentPage(OPTION_2_ADVANCED_RESOLUTION);
+        enterDataInAssumption2("Option2 Assumption2");
+        enterDataInInjection2("Option2 Injection2");
+        enterDataInHowTo2("Option2 HowTo2");
+        waitAndClickElement(GO_UP, 5);
+        enterDataInAssumption1("Option2 Assumption1");
+        enterDataInInjection1("Option2 Injection1");
+        enterDataInHowTo1("Option2 HowTo1");
+        done();
+        return this;
+    }
+
+    public ResolutionPage mySelfAdvancedResolutionOption3() throws InterruptedException {
+        assertCurrentPage(STEP3B);
+        assertCurrentPage(OPTION_3_ADVANCED_RESOLUTION);
+        enterDataInAssumption1("Option3 Assumption1");
+        enterDataInInjection1("Option3 Injection1");
+        enterDataInHowTo1("Option3 HowTo1");
+        done();
+        return this;
+    }
+
+    public ResolutionPage mySelfAdvancedResolutionOption4() throws InterruptedException {
+        assertCurrentPage(STEP3B);
+        assertCurrentPage(OPTION_4_ADVANCED_RESOLUTION);
+        enterDataInAssumption1("Option4 Assumption1");
+        enterDataInInjection1("Option4 Injection1");
+        enterDataInHowTo1("Option4 HowTo1");
+        done();
+        return this;
+    }
 
 	public ResolutionPage enterDataInAssumption1(String key) throws InterruptedException {
 		logger.info("Enter Options 1 Assumption");
@@ -371,10 +413,17 @@ public class ResolutionPage extends BasePage {
 	}
 
 
+	public ResolutionPage skipResolution() {
+	    logger.info("Skipping the resolution");
+	    goToNext();
+	    waitAndClickElement(SKIP, 5);
+	    return this;
+    }
+
 //	public ResolutionPage printAllKeys() {
 //		for(String keys : Harmony.keySet()) {
 //			System.out.println(keys + ":" + Harmony.get(keys));
 //		}
 //		return this;
 //	}
-}
+	}

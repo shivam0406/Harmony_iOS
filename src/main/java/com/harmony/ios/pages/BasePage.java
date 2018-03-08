@@ -5,10 +5,13 @@ import com.harmony.ios.utils.TestUtils;
 import com.harmony.ios.utils.WebDriverFactory;
 import com.sun.xml.internal.rngom.parse.host.Base;
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.remote.HideKeyboardStrategy;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -73,6 +76,11 @@ public class BasePage {
 		element.sendKeys(values);
 		driver.hideKeyboard();
 	}
+
+    public void setValueswithHideKeyboard1(By locator, String values){
+        WebElement element = driver.findElement(locator);
+        element.sendKeys(values);
+    }
 
 	public void waitAndClickElement(By locator, int waitTimeInSec) {
 		WebElement element = waitAndFindElement(locator, waitTimeInSec);;
@@ -145,7 +153,7 @@ public class BasePage {
 
 	public BasePage enterValueinBoxesWithoutDone(By locator, String value, String nameOfBox) throws InterruptedException {
 		logger.info("Enter Value in " +nameOfBox+ " Box");
-			setValueswithHideKeyboard(locator, value);
+        setValueswithHideKeyboard1(locator, value);
 		syncAction(2000);
 		Harmony.put(nameOfBox, value);
 		return this;
@@ -196,12 +204,20 @@ public class BasePage {
 		return this;
 	}
 
-	public BasePage scrollDown() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		HashMap scrollObject = new HashMap();
-		scrollObject.put("direction", "up");
-		js.executeScript("mobile: scroll", scrollObject);
+	public BasePage scrollDown() throws InterruptedException {
+//		JavascriptExecutor js = (JavascriptExecutor) driver;
+//		HashMap scrollObject = new HashMap();
+//		scrollObject.put("direction", "up");
+//		js.executeScript("mobile: scroll", scrollObject);
+		//(new TouchAction(driver)).press({int x: 202, int y: 88}).moveTo({x: -3: y: 225}).release();
+//		TouchAction touchAction = new TouchAction(driver);
+//		Point p = driver.findElement(By.id("Toolbar Done Button")).getLocation();
+////touchAction.tap(p.getX(), p.getY());
+		//driver.hideKeyboard(HideKeyboardStrategy.PRESS_KEY, "Done");
+		driver.hideKeyboard(HideKeyboardStrategy.TAP_OUTSIDE);
+		syncAction(2000);
 		return this;
+
 	}
 
 	public BasePage getPageIndicatorValue(By locator, String value) {
