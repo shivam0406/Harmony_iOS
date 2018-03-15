@@ -29,7 +29,7 @@ public class BasePage {
 
 	protected static final Hashtable<String, String> Harmony = new Hashtable<>();
 
-	final int DEFAULT_WAIT_TIME_FOR_ELEMENT = 30;
+	final static int DEFAULT_WAIT_TIME_FOR_ELEMENT = 30;
 
 	public static final By NEXT = MobileBy.AccessibilityId("Next");
 	public static final By DONE = MobileBy.AccessibilityId("Done");
@@ -161,7 +161,7 @@ public class BasePage {
 
 	public BasePage matchText(By locator, String message, String key){
 		//Assert.assertTrue(Harmony.contains(getText(locator).toString()), message);
-		Assert.assertTrue(Harmony.get(key).matches(getText(locator).toString()), message);
+		Assert.assertTrue(Harmony.get(key).matches(getText(locator)), message);
 		return this;
 	}
 
@@ -204,22 +204,6 @@ public class BasePage {
 		return this;
 	}
 
-	public BasePage scrollDown() throws InterruptedException {
-//		JavascriptExecutor js = (JavascriptExecutor) driver;
-//		HashMap scrollObject = new HashMap();
-//		scrollObject.put("direction", "up");
-//		js.executeScript("mobile: scroll", scrollObject);
-		//(new TouchAction(driver)).press({int x: 202, int y: 88}).moveTo({x: -3: y: 225}).release();
-//		TouchAction touchAction = new TouchAction(driver);
-//		Point p = driver.findElement(By.id("Toolbar Done Button")).getLocation();
-////touchAction.tap(p.getX(), p.getY());
-		//driver.hideKeyboard(HideKeyboardStrategy.PRESS_KEY, "Done");
-		driver.hideKeyboard(HideKeyboardStrategy.TAP_OUTSIDE);
-		syncAction(2000);
-		return this;
-
-	}
-
 	public BasePage getPageIndicatorValue(By locator, String value) {
 		Assert.assertEquals(driver.findElement(locator).getAttribute("value"), value, "Both Attributes value matched");
 		return this;
@@ -229,6 +213,4 @@ public class BasePage {
 		Assert.assertTrue(driver.findElement(locator).getAttribute("value").contains(value), "Attribute value matched");
 		return this;
 	}
-
-
 }
