@@ -95,7 +95,7 @@ public class End2EndWithBlameMySelf extends iOSBaseTest {
     }
 
     @Test
-    public void test6() {
+    public void test6() throws InterruptedException {
         TestConflictDataResolvedPage testConflictDataResolvedPage = new TestConflictDataResolvedPage("my self");
         testConflictDataResolvedPage
                 .onConflictResolvedPage()
@@ -103,7 +103,39 @@ public class End2EndWithBlameMySelf extends iOSBaseTest {
                 .checkTactic()
                 .checkStackholders()
                 .matchMyselfTacticData()
-                .matchMyselfStrategyData();
+                .matchMyselfStrategyData()
+                .matchMySelfWhy1Data()
+                .matchWhy2Data("Options1");
+        testConflictDataResolvedPage
+                .goToNext();
+        testConflictDataResolvedPage
+                .dismissCongratulation();
+
+    }
+
+    @Test
+    public void test7() throws InterruptedException {
+        ExperimentPage experimentPage = new ExperimentPage("My self");
+        experimentPage
+                .verifyTestConflictDataResolvedPage()
+                .verifyWhy1()
+                .verifyWhatFor()
+                .verifyWhy2()
+                .verifyHowTo()
+                .verifyWhy3()
+                .matchWhy1Data()
+                .matchMySelfWhatForData()
+                .matchMySelfWhy2Data("Options1")
+                .matchMySelfHowToData("Options1");
+        experimentPage
+                .done();
+        experimentPage
+                .verifySaveDataAlert()
+                .clickOK()
+                .dismissCongratulation();
+
+
+
     }
 
 

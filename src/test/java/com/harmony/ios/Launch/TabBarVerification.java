@@ -3,6 +3,7 @@ package com.harmony.ios.Launch;
 import com.harmony.ios.AppProperties;
 import com.harmony.ios.iOSBaseTest;
 import com.harmony.ios.pages.CreateConflict;
+import com.harmony.ios.pages.MyProfile;
 import com.harmony.ios.pages.TabBar;
 import com.harmony.ios.utils.WebDriverFactory;
 import org.testng.annotations.BeforeClass;
@@ -36,5 +37,9 @@ public class TabBarVerification extends iOSBaseTest {
         tabBar
                 .clickOnPCCOverview()
                 .iconPccStory();
+        MyProfile myProfile = new MyProfile();
+        myProfile
+                .editProfile()
+                .logout();
     }
 }

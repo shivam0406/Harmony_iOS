@@ -28,7 +28,7 @@ public class LoginPage extends BasePage {
 		return this;
 	}
 
-	public LoginPage LoginPage() {
+	public LoginPage loginPage() {
 		assertCurrentPage(SIGN_IN);
 		return this;
 	}

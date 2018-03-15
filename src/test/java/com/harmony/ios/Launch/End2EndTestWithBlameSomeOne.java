@@ -180,7 +180,7 @@ public class End2EndTestWithBlameSomeOne extends iOSBaseTest {
                 .verifyWhy2()
                 .verifyHowTo()
                 .verifyWhy3()
-                .matchSomeoneWhy1Data()
+                .matchWhy1Data()
                 .matchSomeoneWhatForData()
                 .matchSomeoneWhy2Data()
                 .matchSomeoneHowToData();

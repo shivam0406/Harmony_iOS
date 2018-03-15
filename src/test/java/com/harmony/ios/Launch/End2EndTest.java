@@ -24,7 +24,7 @@ public class End2EndTest extends iOSBaseTest {
 		LoginPage loginPage = new LoginPage();
 		loginPage
 				.signIn()
-				.LoginPage()
+				.loginPage()
 				.enterUserName()
 				.clickSignin();
 		return this;

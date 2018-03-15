@@ -23,7 +23,7 @@ public class ExperimentPage extends BasePage {
 	private static final By HOW_TO_DATA = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[5]/XCUIElementTypeTextView[1]");
 	private static final By SAVE_DATA_ALERT_BOX = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeAlert[1]");
 	private static final By OK = MobileBy.AccessibilityId("OK");
-
+	private static final By HOW_TO_TEXT_DATA = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[5]/XCUIElementTypeTextView[1]");
 	public ExperimentPage(String blame){
 		if(blame.matches("no one")) {
 			assertCurrentPage(STEP_5A);
@@ -77,6 +77,79 @@ public class ExperimentPage extends BasePage {
 		return this;
 	}
 
+	public ExperimentPage matchMySelfHowToData(String Options) {
+		waitAndClickElement(HOW_TO, 1);
+		String s = getText(HOW_TO_TEXT_DATA);
+		Assert.assertTrue(Harmony.get("Myself Solution").matches(getText(HOW_TO_DATA).split("\\s+")[4]));
+
+		if(Options.equalsIgnoreCase("Options1")) {
+			Assert.assertTrue(s.contains(Harmony.get("Option1 HowTo1")));
+			Assert.assertTrue(s.contains(Harmony.get("Option1 HowTo2")));
+		}
+		else if(Options.equalsIgnoreCase("Options2")) {
+			Assert.assertTrue(s.contains(Harmony.get("Option2 HowTo1")));
+			Assert.assertTrue(s.contains(Harmony.get("Option2 HowTo2")));
+		}
+
+		else if(Options.equalsIgnoreCase("Options3")) {
+			Assert.assertTrue(s.contains(Harmony.get("Option3 HowTo1")));
+		}
+
+		else if(Options.equalsIgnoreCase("Options4")) {
+			Assert.assertTrue(s.contains(Harmony.get("Option4 HowTo1")));
+		}
+		logger.info("How To Data matched successfully");
+		return this;
+	}
+
+
+	public ExperimentPage matchWhy2Data() {
+		waitAndClickElement(WHY_2, 1);
+		String s = getText(WHY_2_DATA);
+		Assert.assertTrue(Harmony.get("Solution").matches(s.split("\\s+")[12]));
+		Assert.assertTrue(Harmony.get("Alternative Pros").matches(s.split("\\s+")[16]));
+		Assert.assertTrue(Harmony.get("Solution").matches(s.split("\\s+")[29]));
+		Assert.assertTrue(Harmony.get("Unique Cons").matches(s.split("\\s+")[34]));
+		return this;
+	}
+
+	public ExperimentPage matchSomeoneWhy2Data() {
+		waitAndClickElement(WHY_2, 1);
+		String s = getText(WHY_2_DATA);
+		Assert.assertTrue(Harmony.get("Someone Solution").matches(s.split("\\s+")[12]));
+		Assert.assertTrue(Harmony.get("Someone Alternative Pros").matches(s.split("\\s+")[16]));
+		Assert.assertTrue(Harmony.get("Someone Solution").matches(s.split("\\s+")[29]));
+		Assert.assertTrue(Harmony.get("Someone Unique Cons").matches(s.split("\\s+")[34]));
+		return this;
+	}
+
+	public ExperimentPage matchMySelfWhy2Data(String Options) {
+		waitAndClickElement(WHY_2, 1);
+		String s = getText(WHY_2_DATA);
+
+		Assert.assertTrue(s.contains(Harmony.get("Myself Solution")));
+		Assert.assertTrue(s.contains(Harmony.get("Myself Alternative Pros")));
+		Assert.assertTrue(s.contains(Harmony.get("Myself Unique Cons")));
+		if(Options.equalsIgnoreCase("Options1")) {
+			Assert.assertTrue(s.contains(Harmony.get("Option1 Injection1")));
+			Assert.assertTrue(s.contains(Harmony.get("Option1 Injection2")));
+		}
+		else if(Options.equalsIgnoreCase("Options2")) {
+			Assert.assertTrue(s.contains(Harmony.get("Option2 Injection1")));
+			Assert.assertTrue(s.contains(Harmony.get("Option2 Injection2")));
+		}
+
+		else if(Options.equalsIgnoreCase("Options3")) {
+			Assert.assertTrue(s.contains(Harmony.get("Option3 Injection1")));
+		}
+
+		else if(Options.equalsIgnoreCase("Options4")) {
+			Assert.assertTrue(s.contains(Harmony.get("Option4 Injection1")));
+		}
+		return this;
+	}
+
+
 	public ExperimentPage matchWhatForData() {
 		waitAndClickElement(WAHT_FOR,1 );
 		String s = getText(WHAT_FOR_DATA);
@@ -99,25 +172,17 @@ public class ExperimentPage extends BasePage {
 		return this;
 	}
 
-	public ExperimentPage matchWhy2Data() {
-		waitAndClickElement(WHY_2, 1);
-        String s = getText(WHY_2_DATA);
-		Assert.assertTrue(Harmony.get("Solution").matches(s.split("\\s+")[12]));
-		Assert.assertTrue(Harmony.get("Alternative Pros").matches(s.split("\\s+")[16]));
-		Assert.assertTrue(Harmony.get("Solution").matches(s.split("\\s+")[29]));
-		Assert.assertTrue(Harmony.get("Unique Cons").matches(s.split("\\s+")[34]));
+	public ExperimentPage matchMySelfWhatForData() {
+		waitAndClickElement(WAHT_FOR,1 );
+		String s = getText(WHAT_FOR_DATA);
+		Assert.assertTrue(Harmony.get("Myself Unique Pros").matches(s.split("\\s+")[5]));
+		Assert.assertTrue(Harmony.get("Myself Alternative Pros").matches(s.split("\\s+")[7]));
+		Assert.assertTrue(Harmony.get("Myself Unique Cons").matches(s.split("\\s+")[14]));
+		Assert.assertTrue(Harmony.get("Myself Alternative Cons").matches(s.split("\\s+")[16]));
+		logger.info("What for data matched successfully");
 		return this;
 	}
 
-	public ExperimentPage matchSomeoneWhy2Data() {
-		waitAndClickElement(WHY_2, 1);
-		String s = getText(WHY_2_DATA);
-		Assert.assertTrue(Harmony.get("Someone Solution").matches(s.split("\\s+")[12]));
-		Assert.assertTrue(Harmony.get("Someone Alternative Pros").matches(s.split("\\s+")[16]));
-		Assert.assertTrue(Harmony.get("Someone Solution").matches(s.split("\\s+")[29]));
-		Assert.assertTrue(Harmony.get("Someone Unique Cons").matches(s.split("\\s+")[34]));
-		return this;
-	}
 
 	public ExperimentPage matchWhy1Data() {
 		String s = getText(WHY_1_DATA);
@@ -128,14 +193,36 @@ public class ExperimentPage extends BasePage {
 		return this;
 	}
 
-	public ExperimentPage matchSomeoneWhy1Data() {
-		String s = getText(WHY_1_DATA);
-		Assert.assertTrue(s.split("\\s+")[2].matches(Harmony.get("Problem")));
-		Assert.assertTrue(s.split("\\s+")[6].matches(Harmony.get("Impact on me")));
-		Assert.assertTrue(s.split("\\s+")[8].matches(Harmony.get("Impact on Others")));
-		logger.info("Why 1 Data Matched");
-		return this;
-	}
+
+
+
+
+
+//	public ExperimentPage matchSomeoneWhy1Data() {
+//		String s = getText(WHY_1_DATA);
+//		Assert.assertTrue(s.split("\\s+")[2].matches(Harmony.get("Problem")));
+//		Assert.assertTrue(s.split("\\s+")[6].matches(Harmony.get("Impact on me")));
+//		Assert.assertTrue(s.split("\\s+")[8].matches(Harmony.get("Impact on Others")));
+//		logger.info("Why 1 Data Matched");
+//		return this;
+//	}
+//
+//	public ExperimentPage matchMySelfWhy1Data() {
+//		String s = getText(WHY_1_DATA);
+//		Assert.assertTrue(s.split("\\s+")[2].matches(Harmony.get("Problem")));
+//		Assert.assertTrue(s.split("\\s+")[6].matches(Harmony.get("Impact on me")));
+//		Assert.assertTrue(s.split("\\s+")[8].matches(Harmony.get("Impact on Others")));
+//		logger.info("Why 1 Data Matched");
+//		return this;
+//	}
+
+
+
+
+
+
+
+
 
 	public ExperimentPage verifySaveDataAlert() {
 		assertCurrentPage(SAVE_DATA_ALERT_BOX);

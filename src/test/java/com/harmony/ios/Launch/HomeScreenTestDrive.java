@@ -25,7 +25,7 @@ public class HomeScreenTestDrive extends iOSBaseTest {
         LoginPage loginPage = new LoginPage();
         loginPage
                 .signIn()
-                .LoginPage();
+                .loginPage();
         TestDrive testDrive = new TestDrive();
         testDrive
                 .clickOnBusinessExmample()

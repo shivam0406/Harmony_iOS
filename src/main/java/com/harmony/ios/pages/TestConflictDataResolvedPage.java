@@ -22,6 +22,7 @@ public class TestConflictDataResolvedPage extends BasePage {
 	private static final By STEP_4_B = MobileBy.AccessibilityId("Step 4b - Planning");
 	private static final By WHY2_DATA = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[3]/XCUIElementTypeTextView[1]");
 	private static final By STATIC_DATA_BUTTON = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeOther[2]/XCUIElementTypeButton[1]");
+	private static final By HOW_BUTTON = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeOther[4]/XCUIElementTypeButton[1]");
 	public TestConflictDataResolvedPage(String blame){
 		if(blame.matches("no one")) {
 			assertCurrentPage(STEP_4_A);
@@ -111,7 +112,7 @@ public class TestConflictDataResolvedPage extends BasePage {
 		Assert.assertTrue(Harmony.get("Myself Alternative Pros").matches(s.split("\n")[3]));
 		Assert.assertTrue(Harmony.get("Myself Unique Cons").matches(s.split("\n")[6]));
 		Assert.assertTrue(Harmony.get("Myself Alternative Cons").matches(s.split("\n")[8]));
-		goToNext();
+		//goToNext();
 		return this;
 	}
 
@@ -126,6 +127,7 @@ public class TestConflictDataResolvedPage extends BasePage {
 	}
 
 	public TestConflictDataResolvedPage matchWhy2Data(String Options) {
+		waitAndClickElement(HOW_BUTTON, 5);
 		String s = getText(WHY2_DATA);
 		if(Options.equalsIgnoreCase("Options1")) {
 			Assert.assertTrue(s.contains(Harmony.get("Option1 Injection1")));

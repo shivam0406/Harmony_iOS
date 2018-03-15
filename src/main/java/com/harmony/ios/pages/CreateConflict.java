@@ -60,9 +60,10 @@ public class CreateConflict extends BasePage {
 		return this;
 	}
 
-	public CreateConflict createConflictUsingChat() {
+	public CreateConflict clickOnChat() {
 		logger.info("Lets create the conflict using CHAT");
 		waitAndClickElement(CHAT_ICON, 5);
+
 		return this;
 	}
 

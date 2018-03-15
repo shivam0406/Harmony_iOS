@@ -25,7 +25,7 @@ public class ProConCloudVerification  extends iOSBaseTest {
         LoginPage loginPage = new LoginPage();
         loginPage
                 .signIn()
-                .LoginPage();
+                .loginPage();
         loginPage
                 .swipeDown();
 
