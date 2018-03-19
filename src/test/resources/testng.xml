@@ -22,6 +22,9 @@
             <!--<include name="deleteConflict"/>-->
             </methods>
             </class>
+
+
+
             <class name="com.harmony.ios.Launch.End2EndTestWithBlameSomeOne">
             <methods>
             <include name="test"/>
@@ -41,20 +44,23 @@
 
             <class name="com.harmony.ios.Launch.End2EndWithBlameMySelf">
             <methods>
-            <include name="test"/>
-            <include name="test2"/>
-            <include name="test3"/>
-            <include name="test4"/>
-            <include name="test5"/>
-            <include name="test6"/>
-            <include name="test7"/>
-            <include name="test8"/>
+                <include name="test"/>
+                <include name="test2"/>
+                <include name="test3"/>
+                <include name="test4"/>
+                <include name="test5"/>
+                <include name="test6"/>
+                <include name="test7"/>
+                <include name="test8"/>
             </methods>
             </class>
-            <!--<class name="com.harmony.ios.Launch.HomeScreenVerification"/>-->
-            <!--<class name="com.harmony.ios.Launch.ProConCloudVerification"/>-->
-            <!--<class name="com.harmony.ios.Launch.HomeScreenTestDrive"/>-->
-            <!--<class name="com.harmony.ios.Launch.TabBarVerification"/>-->
+
+
+            <class name="com.harmony.ios.Launch.HomeScreenVerification"/>
+            <class name="com.harmony.ios.Launch.ProConCloudVerification"/>
+            <class name="com.harmony.ios.Launch.HomeScreenTestDrive"/>
+            <class name="com.harmony.ios.Launch.TabBarVerification"/>
+            <class name="com.harmony.ios.Launch.ChatWindow"/>
         </classes>
     </test>
 
