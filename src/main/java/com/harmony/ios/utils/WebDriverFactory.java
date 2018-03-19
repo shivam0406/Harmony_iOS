@@ -44,7 +44,7 @@ public class WebDriverFactory {
 //		capabilities.setCapability("fullReset", false);
 		capabilities.setCapability("newCommandTimeout", appProperties.getNewCommandTimeOut());
 
-		IOSDriver driver = new IOSDriver(new URL("http://10.10.60.127:4723/wd/hub"), capabilities);
+		IOSDriver driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 		setIOSDriver(driver);
 		return driver;
 	}
