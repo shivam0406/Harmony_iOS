@@ -3,15 +3,15 @@ package com.harmony.ios.pages;
 import com.harmony.ios.exceptions.PageNotCurrentException;
 import com.harmony.ios.utils.TestUtils;
 import com.harmony.ios.utils.WebDriverFactory;
-import com.sun.xml.internal.rngom.parse.host.Base;
+
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.TouchAction;
+
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.remote.HideKeyboardStrategy;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Point;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
