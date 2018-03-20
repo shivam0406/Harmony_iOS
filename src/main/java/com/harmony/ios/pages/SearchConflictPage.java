@@ -45,9 +45,4 @@ public class SearchConflictPage extends BasePage {
         assertCurrentPage(NO_DECISION);
         return this;
     }
-
-
-
-
-
 }

@@ -50,7 +50,7 @@ public class ShareConflictPage extends BasePage {
 
 	public ShareConflictPage sharePublic() throws InterruptedException {
 		logger.info("Let's share the conflict publicly");
-		clickElement(SHARE_PUBLIC);
+		waitAndClickElement(SHARE_PUBLIC, 5);
 		syncAction(2000);
 		return this;
 	}
@@ -101,8 +101,9 @@ public class ShareConflictPage extends BasePage {
 		return this;
 	}
 
-	public ShareConflictPage clickOK() {
+	public ShareConflictPage clickOK() throws InterruptedException {
 		logger.info("Let's click on OK, Conflict has been shared publicly");
+		syncAction(5000);
 		clickElement(OK);
 		return this;
 	}

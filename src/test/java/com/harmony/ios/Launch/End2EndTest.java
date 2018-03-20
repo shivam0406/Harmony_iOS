@@ -240,6 +240,26 @@ public class End2EndTest extends iOSBaseTest {
 	}
 
 	@Test(priority = 13)
+    public End2EndTest searchConflict() throws InterruptedException {
+	    SearchConflictPage searchConflictPage = new SearchConflictPage();
+	    searchConflictPage
+                .clickOnSearchIcon()
+                .searchByAuthor()
+                .searchBySubString()
+                .searchByUnknown()
+                .done();
+	    return this;
+    }
+
+    @Test(priority = 14)
+    public End2EndTest verifyAllOptionsOnHome() {
+        AllOptionsOnHomeScreen allOptionsOnHomeScreen = new AllOptionsOnHomeScreen();
+        allOptionsOnHomeScreen
+                .verifyChatSection();
+        return this;
+    }
+
+	@Test(priority = 15)
 	public End2EndTest shareConflict() throws InterruptedException {
 		ShareConflictPage shareConflictPage = new ShareConflictPage();
 		shareConflictPage
@@ -259,16 +279,8 @@ public class End2EndTest extends iOSBaseTest {
 		return this;
 	}
 
-	@Test(priority = 14)
-    public End2EndTest verifyAllOptionsOnHome() {
-	 AllOptionsOnHomeScreen allOptionsOnHomeScreen = new AllOptionsOnHomeScreen();
-	 allOptionsOnHomeScreen
-             .verifyChatSection();
-	 return this;
-    }
 
-
-	@Test(priority = 15)
+	@Test(priority = 16)
 	public End2EndTest deleteConflict() throws InterruptedException {
 		DeleteConflictPage deleteConflictPage = new DeleteConflictPage();
 		deleteConflictPage

@@ -17,51 +17,53 @@
             <include name="Planning"/>
             <include name="Experiment"/>
             <include name="StoryVerify"/>
-            <!--<include name="shareConflict"/>-->
-            <!--<include name="verifyAllOptionsOnHome"/>-->
-            <!--<include name="deleteConflict"/>-->
+                <include name="searchConflict"/>
+            <include name="verifyAllOptionsOnHome"/>
+                <include name="shareConflict"/>
+            <include name="deleteConflict"/>
             </methods>
             </class>
-
-
-
-            <class name="com.harmony.ios.Launch.End2EndTestWithBlameSomeOne">
-            <methods>
-            <include name="test"/>
-            <include name="test2"/>
-            <include name="test3"/>
-            <include name="test4"/>
-            <include name="test5"/>
-            <include name="test6"/>
-            <include name="test7"/>
-            <include name="test8"/>
-            <include name="test9"/>
-            <include name="test10"/>
-            <!--<include name="test11"/>-->
-            <!--<include name="test12"/>-->
-            </methods>
-            </class>
-
-            <class name="com.harmony.ios.Launch.End2EndWithBlameMySelf">
-            <methods>
-                <include name="test"/>
-                <include name="test2"/>
-                <include name="test3"/>
-                <include name="test4"/>
-                <include name="test5"/>
-                <include name="test6"/>
-                <include name="test7"/>
-                <include name="test8"/>
-            </methods>
-            </class>
-
-
-            <class name="com.harmony.ios.Launch.HomeScreenVerification"/>
-            <class name="com.harmony.ios.Launch.ProConCloudVerification"/>
-            <class name="com.harmony.ios.Launch.HomeScreenTestDrive"/>
-            <class name="com.harmony.ios.Launch.TabBarVerification"/>
-            <class name="com.harmony.ios.Launch.ChatWindow"/>
         </classes>
+
+
+
+            <!--<class name="com.harmony.ios.Launch.End2EndTestWithBlameSomeOne">-->
+            <!--<methods>-->
+            <!--<include name="test"/>-->
+            <!--<include name="test2"/>-->
+            <!--<include name="test3"/>-->
+            <!--<include name="test4"/>-->
+            <!--<include name="test5"/>-->
+            <!--<include name="test6"/>-->
+            <!--<include name="test7"/>-->
+            <!--<include name="test8"/>-->
+            <!--<include name="test9"/>-->
+            <!--<include name="test10"/>-->
+            <!--&lt;!&ndash;<include name="test11"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<include name="test12"/>&ndash;&gt;-->
+            <!--</methods>-->
+            <!--</class>-->
+
+            <!--<class name="com.harmony.ios.Launch.End2EndWithBlameMySelf">-->
+            <!--<methods>-->
+                <!--<include name="test"/>-->
+                <!--<include name="test2"/>-->
+                <!--<include name="test3"/>-->
+                <!--<include name="test4"/>-->
+                <!--<include name="test5"/>-->
+                <!--<include name="test6"/>-->
+                <!--<include name="test7"/>-->
+                <!--<include name="test8"/>-->
+            <!--</methods>-->
+            <!--</class>-->
+
+
+            <!--<class name="com.harmony.ios.Launch.HomeScreenVerification"/>-->
+            <!--<class name="com.harmony.ios.Launch.ProConCloudVerification"/>-->
+            <!--<class name="com.harmony.ios.Launch.HomeScreenTestDrive"/>-->
+            <!--<class name="com.harmony.ios.Launch.TabBarVerification"/>-->
+            <!--<class name="com.harmony.ios.Launch.ChatWindow"/>-->
+        <!--</classes>-->
     </test>
 
 
