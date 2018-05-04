@@ -43,6 +43,15 @@ public class MyProblemPage extends BasePage {
 		return this;
 	}
 
+	public MyProblemPage enterTheProblemQPCC() throws InterruptedException {
+		logger.info("Let's enter the problem");
+		String myValue = TestUtils.randomValues();
+		enterValueinBoxes(ENTER_PROBLEM, myValue, "Problem_QPCC");
+		syncAction(1000);
+		clickElement(NEXT);
+		return this;
+	}
+
 	public MyProblemPage impactOnMe() throws InterruptedException {
 		logger.info("Enter the value in impact on me box");
 		String myValues = TestUtils.randomValues();

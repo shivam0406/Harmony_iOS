@@ -83,6 +83,9 @@ public class ChooseResolutionOptionPage extends BasePage{
 			Assert.assertTrue(Harmony.get("Option1 HowTo2").matches(getText(O1_HT2)), "Options1 HowTo2 text matched");
 		}
 		//String[] s1=   s.split("-");
+		else if (blame.equalsIgnoreCase("chat")) {
+			Assert.assertTrue(Harmony.get("chat_my_solution").matches(s.trim()), "My chat Solution box values matched");
+		}
 		else {
 			Assert.assertTrue(Harmony.get("Solution").matches(s.trim()), "My Solution box values matched");
 		}

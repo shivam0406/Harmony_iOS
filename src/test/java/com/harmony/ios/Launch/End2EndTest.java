@@ -38,8 +38,9 @@ public class End2EndTest extends iOSBaseTest {
 				.clickOnStaticText()
                 .checkProConCloudAlertBox()
 				.moveToConflict()
-                .checkOFChatICON()
 				.createConflict()
+				.shanta()
+				.discoverForMe()
 				.checkConflitBox()
 				.enterConflictValue()
 				.clickOK()
@@ -63,8 +64,8 @@ public class End2EndTest extends iOSBaseTest {
 
 	@Test(priority = 4)
 	public End2EndTest enterMyConflict() throws InterruptedException {
-		MyConflictPage myConflictPage = new MyConflictPage();
-		myConflictPage
+        MyConflictPage myConflictPage = new MyConflictPage();
+        myConflictPage
 				.enterSolutionInBox()
 				.enterAlternativeSolutionInBox()
 				.enterUniqueProsInBox()
@@ -245,8 +246,8 @@ public class End2EndTest extends iOSBaseTest {
 	    searchConflictPage
                 .clickOnSearchIcon()
                 .searchByAuthor()
-                .searchBySubString()
-                .searchByUnknown()
+                //.searchBySubString()
+                //.searchByUnknown()
                 .done();
 	    return this;
     }

@@ -126,7 +126,7 @@ public class ShareConflictPage extends BasePage {
 	public ShareConflictPage movetoConflictLibrary() throws InterruptedException {
 		logger.info("Move to Conflict library to check the we share conflict has came here");
 		clickElement(CONFLICT_LIBRARY);
-		refreshPage();
+		swipeDown();
 		logger.info("Refreshing the page");
 		syncAction(5000);
 		String s = getText(CONFLICT_NAME);

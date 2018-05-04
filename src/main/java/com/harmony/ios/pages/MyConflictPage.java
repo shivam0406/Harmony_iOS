@@ -37,10 +37,25 @@ public class MyConflictPage extends BasePage {
 		return this;
 	}
 
+	public MyConflictPage enterSolutionInBoxQPCC() throws InterruptedException {
+		logger.info("Enter Solution in the Text Box");
+		String myValues = TestUtils.randomValues();
+		enterValueinBoxes(SOLUTION_BOX, myValues, "Solution_QPCC");
+		return this;
+	}
+
 	public MyConflictPage enterAlternativeSolutionInBox() throws InterruptedException {
 		logger.info("Enter Alternative Solution in the Text Box");
 		String myValues = TestUtils.randomValues();
 		enterValueinBoxes(ALTERNATIVE_BOX, myValues, "Alternative Solution");
+		clickElement(NEXT);
+		return this;
+	}
+
+	public MyConflictPage enterAlternativeSolutionInBox_QPCC() throws InterruptedException {
+		logger.info("Enter Alternative Solution in the Text Box");
+		String myValues = TestUtils.randomValues();
+		enterValueinBoxes(ALTERNATIVE_BOX, myValues, "Alternative Solution QPCC");
 		clickElement(NEXT);
 		return this;
 	}

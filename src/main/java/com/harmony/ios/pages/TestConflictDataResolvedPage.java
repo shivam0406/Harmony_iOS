@@ -66,6 +66,16 @@ public class TestConflictDataResolvedPage extends BasePage {
 		return this;
 	}
 
+	public TestConflictDataResolvedPage matchChatStrategyData() {
+		String s = getText(STRATEGY_DATA);
+		Assert.assertTrue(Harmony.get("chat_my_solution_pros").matches(s.split("\n")[1]));
+		Assert.assertTrue(Harmony.get("chat_alternative_solution_pros").matches(s.split("\n")[3]));
+		Assert.assertTrue(Harmony.get("chat_my_solution_cons").matches(s.split("\n")[6]));
+		Assert.assertTrue(Harmony.get("chat_alternative_solution_cons").matches(s.split("\n")[8]));
+		goToNext();
+		return this;
+	}
+
 	public TestConflictDataResolvedPage matchSomeoneStrategyData() {
 		String s = getText(STRATEGY_DATA);
 		Assert.assertTrue(Harmony.get("Someone Unique Pros").matches(s.split("\n")[1]));
@@ -123,6 +133,15 @@ public class TestConflictDataResolvedPage extends BasePage {
 		Assert.assertTrue(s.contains(Harmony.get("Problem")));
 		Assert.assertTrue(s.contains(Harmony.get("Impact on me")));
 		Assert.assertTrue(s.contains(Harmony.get("Impact on Others")));
+		return this;
+	}
+
+	public TestConflictDataResolvedPage matchChatMySelfWhy1Data() {
+		waitAndClickElement(STATIC_DATA_BUTTON,5);
+		String s = getText(STRATEGY_DATA);
+		Assert.assertTrue(s.contains(Harmony.get("chat_problem")));
+		Assert.assertTrue(s.contains(Harmony.get("chat_local_impact")));
+		Assert.assertTrue(s.contains(Harmony.get("chat_system_impact")));
 		return this;
 	}
 

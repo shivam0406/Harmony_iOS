@@ -70,6 +70,13 @@ public class ExperimentPage extends BasePage {
 		return this;
 	}
 
+	public ExperimentPage matchChatHowToData() {
+		waitAndClickElement(HOW_TO, 1);
+		Assert.assertTrue(Harmony.get("chat_my_solution").matches(getText(HOW_TO_DATA).split("\\s+")[4]));
+		logger.info("How To Data matched successfully");
+		return this;
+	}
+
 	public ExperimentPage matchSomeoneHowToData() {
 		waitAndClickElement(HOW_TO, 1);
 		Assert.assertTrue(Harmony.get("Someone Solution").matches(getText(HOW_TO_DATA).split("\\s+")[4]));
@@ -110,6 +117,16 @@ public class ExperimentPage extends BasePage {
 		Assert.assertTrue(Harmony.get("Alternative Pros").matches(s.split("\\s+")[16]));
 		Assert.assertTrue(Harmony.get("Solution").matches(s.split("\\s+")[29]));
 		Assert.assertTrue(Harmony.get("Unique Cons").matches(s.split("\\s+")[34]));
+		return this;
+	}
+
+	public ExperimentPage matchChatWhy2Data() {
+		waitAndClickElement(WHY_2, 1);
+		String s = getText(WHY_2_DATA);
+		Assert.assertTrue(Harmony.get("chat_my_solution").matches(s.split("\\s+")[12]));
+		Assert.assertTrue(Harmony.get("chat_alternative_solution_pros").matches(s.split("\\s+")[16]));
+		Assert.assertTrue(Harmony.get("chat_my_solution").matches(s.split("\\s+")[29]));
+		Assert.assertTrue(Harmony.get("chat_my_solution_cons").matches(s.split("\\s+")[34]));
 		return this;
 	}
 
@@ -161,6 +178,17 @@ public class ExperimentPage extends BasePage {
 		return this;
 	}
 
+	public ExperimentPage matchChatWhatForData() {
+		waitAndClickElement(WAHT_FOR,1 );
+		String s = getText(WHAT_FOR_DATA);
+		Assert.assertTrue(Harmony.get("chat_my_solution_pros").matches(s.split("\\s+")[5]));
+		Assert.assertTrue(Harmony.get("chat_alternative_solution_pros").matches(s.split("\\s+")[7]));
+		Assert.assertTrue(Harmony.get("chat_my_solution_cons").matches(s.split("\\s+")[14]));
+		Assert.assertTrue(Harmony.get("chat_alternative_solution_cons").matches(s.split("\\s+")[16]));
+		logger.info("What for data matched successfully");
+		return this;
+	}
+
 	public ExperimentPage matchSomeoneWhatForData() {
 		waitAndClickElement(WAHT_FOR,1 );
 		String s = getText(WHAT_FOR_DATA);
@@ -189,6 +217,15 @@ public class ExperimentPage extends BasePage {
 		Assert.assertTrue(s.split("\\s+")[2].matches(Harmony.get("Problem")));
 		Assert.assertTrue(s.split("\\s+")[6].matches(Harmony.get("Impact on me")));
 		Assert.assertTrue(s.split("\\s+")[8].matches(Harmony.get("Impact on Others")));
+		logger.info("Why 1 Data Matched");
+		return this;
+	}
+
+	public ExperimentPage matchChatWhy1Data() {
+		String s = getText(WHY_1_DATA);
+		Assert.assertTrue(s.split("\\s+")[2].matches(Harmony.get("chat_problem")));
+		Assert.assertTrue(s.split("\\s+")[6].matches(Harmony.get("chat_local_impact")));
+		Assert.assertTrue(s.split("\\s+")[8].matches(Harmony.get("chat_system_impact")));
 		logger.info("Why 1 Data Matched");
 		return this;
 	}

@@ -33,7 +33,7 @@ public class BasePage {
 
 	public static final By NEXT = MobileBy.AccessibilityId("Next");
 	public static final By DONE = MobileBy.AccessibilityId("Done");
-	public static final By DONE2 = MobileBy.xpath("//XCUIElementTypeButton[@name=\"Done\"]");
+	public static final By CLEAR_TEXT = MobileBy.xpath("Clear text");
 	public static final By TEXT_VIEW = MobileBy.xpath("//XCUIElementTypeTextView");
 	public static final By MOVE_TO_CONFLICT= MobileBy.AccessibilityId("My Decisions");
 	public static final By SHARED_DECISIONS = MobileBy.AccessibilityId("Shared Decisions");
@@ -98,6 +98,10 @@ public class BasePage {
 		driver.switchTo().alert().dismiss();
 	}
 
+//	public void alertBoxTextMatchin(By locator, String text) {
+//    	Assert.assertTrue(driver.switchTo());
+//	}
+
 	public void allowAlertBoxes(String text) {
 		Assert.assertTrue(driver.switchTo().alert().getText().contains(text));
 		driver.switchTo().alert().accept();
@@ -122,6 +126,8 @@ public class BasePage {
 			return true;
 		return false;
 	}
+
+	//public boolean checkAttributed(By locator, )
 
 	public WebElement waitAndFindElement(By locator) {
 		waitForPresence(locator);

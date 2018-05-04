@@ -26,7 +26,7 @@ public class ResolutionPage extends BasePage {
 	private static final By ADVANCED_RESOLUTION = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeButton[1]");
 	private static final By SKIP = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeButton[1]");
 	private static final By OPTION_1 = MobileBy.AccessibilityId("Option 1 : CHANGE++");
-	private static final By OPTION_2 = MobileBy.AccessibilityId("Option 2 : NOT CHANGE++");
+	private static final By OPTION_2 = MobileBy.AccessibilityId("Option 2 : NO CHANGE++");
 	private static final By OPTION_3 = MobileBy.AccessibilityId("Option 3 : WHEN + WHEN NOT");
 	private static final By OPTION_4 = MobileBy.AccessibilityId("Option 4 : ANOTHER CHANGE");
 	private static final By STILL_STUCK = MobileBy.AccessibilityId("Still Stuck?");
@@ -99,6 +99,11 @@ public class ResolutionPage extends BasePage {
 		return this;
 	}
 
+    public ResolutionPage matchChatMyGoalText() {
+        matchText(MY_GOAL_BOX_VALUE, "My chat Goal Text Box Value Matched", "chat_goal");
+        return this;
+    }
+
 	public ResolutionPage matchSomeOneGoalText() {
 		matchText(MY_GOAL_BOX_VALUE, "Someone Goal Text Box Value Matched", "Someone Goal");
 		return this;
@@ -114,6 +119,11 @@ public class ResolutionPage extends BasePage {
 		return this;
 	}
 
+    public ResolutionPage matchChatUniqueProText() {
+        matchText(UNIQUE_PRO_BOX_VALUE, "My Chat Unique Pro Text Box Value Matched", "chat_my_solution_pros");
+        return this;
+    }
+
 	public ResolutionPage matchSomeoneUniqueProText() {
 		matchText(UNIQUE_PRO_BOX_VALUE, "Someone Unique Pro Text Box Value Matched", "Someone Unique Pros");
 		return this;
@@ -128,6 +138,11 @@ public class ResolutionPage extends BasePage {
 		matchText(ALTERNATIVE_PRO_BOX_VALUE, "My Alternative Pro Text Box Value Matched", "Alternative Pros");
 		return this;
 	}
+
+    public ResolutionPage matchChatAlternativeProText() {
+        matchText(ALTERNATIVE_PRO_BOX_VALUE, "My Chat Alternative Pro Text Box Value Matched", "chat_alternative_solution_pros");
+        return this;
+    }
 
 	public ResolutionPage matchSomeoneAlternativeProText() {
 		matchText(ALTERNATIVE_PRO_BOX_VALUE, "Someone Alternative Pro Text Box Value Matched", "Someone Alternative Pros");
@@ -146,6 +161,14 @@ public class ResolutionPage extends BasePage {
 		//matchText(CHANGE, "My Unique Solution Text Box Value Matched");
 		return this;
 	}
+
+    public ResolutionPage matchChatUniqueSolutionText() {
+        String s = getText(CHANGE);
+        String[] s1=   s.split("-");
+        Assert.assertTrue(Harmony.get("chat_my_solution").matches(s1[1].trim().toString()), "My chat Solution box values matched");
+        //matchText(CHANGE, "My Unique Solution Text Box Value Matched");
+        return this;
+    }
 
 	public ResolutionPage matchSomeoneUniqueSolutionText() {
 		String s = getText(CHANGE);
@@ -170,6 +193,13 @@ public class ResolutionPage extends BasePage {
         return this;
     }
 
+    public ResolutionPage matchChatAlternativeSolutionText() {
+        String s = getText(CHANGE);
+        String[] s1=   s.split("-");
+        Assert.assertTrue(Harmony.get("chat_alternative_solution").matches(s1[1].trim().toString()), "My chat Alternative Solution box values matched");
+        return this;
+    }
+
 	public ResolutionPage matchSomeoneAlternativeSolutionText() {
 		String s = getText(CHANGE);
 		String[] s1=   s.split("-");
@@ -190,6 +220,11 @@ public class ResolutionPage extends BasePage {
 		return this;
 	}
 
+    public ResolutionPage matchChatUniqueConsText() {
+        matchText(UNIQUE_CONS_BOX_VALUE, "My  chat Unique Cons Text Value Matched", "chat_my_solution_cons");
+        return this;
+    }
+
 	public ResolutionPage matchSomeoneUniqueConsText() {
 		matchText(UNIQUE_CONS_BOX_VALUE, "Someone Unique Cons Text Value Matched", "Someone Unique Cons");
 		return this;
@@ -205,6 +240,12 @@ public class ResolutionPage extends BasePage {
 		logger.info("All matched and assertion done successfully");
 		return this;
 	}
+
+    public ResolutionPage matchChatAlternativeConsText() {
+        matchText(ALTERNATIVE_CONS_BOX_VALUE, "My chat Alternative Cons Text Value Matched", "chat_alternative_solution_cons");
+        logger.info("All matched and assertion done successfully");
+        return this;
+    }
 
 	public ResolutionPage matchSomeoneAlternativeConsText() {
 		matchText(ALTERNATIVE_CONS_BOX_VALUE, "Someone Alternative Cons Text Value Matched", "Someone Alternative Cons");
@@ -252,6 +293,13 @@ public class ResolutionPage extends BasePage {
 		return this;
 	}
 
+    public ResolutionPage resolveChatOptions1() {
+        assertCurrentPage(CHANGE_PLUS_PLUS);
+        matchText(TEXT_VIEW, "CHANGE++ value matched", "chat_my_solution");
+        done();
+        return this;
+    }
+
 	public ResolutionPage someoneResolutionOption1() {
 		assertCurrentPage(CHANGE_PLUS_PLUS);
 		matchText(TEXT_VIEW, "CHANGE++ value matched", "Someone Solution");
@@ -266,12 +314,19 @@ public class ResolutionPage extends BasePage {
 		return this;
 	}
 
-	public ResolutionPage resolveOptions2() {
+	public ResolutionPage resolveChatOptions2() {
 		assertCurrentPage(NOT_CHANGE_PLUS_PLUS);
-		matchText(TEXT_VIEW, "NOT++ CHANGE++ value matched", "Alternative Solution");
+		matchText(TEXT_VIEW, "NOT++ CHANGE++ value matched", "chat_alternative_solution");
 		done();
 		return this;
 	}
+
+    public ResolutionPage resolveOptions2() {
+        assertCurrentPage(NOT_CHANGE_PLUS_PLUS);
+        matchText(TEXT_VIEW, "NOT++ CHANGE++ value matched", "Alternative Solution");
+        done();
+        return this;
+    }
 
 
 	public ResolutionPage someoneResolveOptions2() {
@@ -296,6 +351,15 @@ public class ResolutionPage extends BasePage {
 		done();
 		return this;
 	}
+
+    public ResolutionPage resolveChatOption3() {
+        assertCurrentPage(PLUS_CONDITION_FOR_CHANGE);
+        assertCurrentPage(PLUS_CONDITION_FOR_NOT_CHANGE);
+        containText(PLUS_CONDITION_FOR_CHANGE_TEXT, "+ Conditions for CHANGE? text matched", "chat_my_solution");
+        containText(PLUS_CONDITION_FOR_NOT_CHANGE_TEXT, "+ Conditions for NOT CHANGE/ALTERNATIVE? text matched", "chat_alternative_solution");
+        done();
+        return this;
+    }
 
 	public ResolutionPage someoneResolveOption3() {
 		assertCurrentPage(PLUS_CONDITION_FOR_CHANGE);

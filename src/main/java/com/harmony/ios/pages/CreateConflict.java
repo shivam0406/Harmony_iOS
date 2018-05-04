@@ -6,6 +6,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import javax.management.monitor.Monitor;
+
 
 public class CreateConflict extends BasePage {
 
@@ -31,6 +33,11 @@ public class CreateConflict extends BasePage {
 	private static final By VERIFY_CONFLICT = MobileBy.xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeTable[1]/XCUIElementTypeCell[1]/XCUIElementTypeStaticText[1]");
 	private static final By PRO_CON_CLOUD = MobileBy.xpath("//XCUIElementTypeApplication[@name=\"HDM\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther");
 	private static final By CHAT_ICON = MobileBy.AccessibilityId("chat white");
+	private static final By SHANTA = MobileBy.AccessibilityId("shanta");
+	private static final By CALCULATE_FOR_ME = MobileBy.AccessibilityId("Calculate for me");
+	private static final By DISCOVER_4_WIN = MobileBy.AccessibilityId("Discover 4 win:win options");
+	private static final By NO_THANKS = MobileBy.AccessibilityId("No, thanks");
+	private static final By YES_PLEASE = MobileBy.AccessibilityId("Yes, Please");
 
 	public CreateConflict() {
 //		logger.info("Getting error");
@@ -41,9 +48,45 @@ public class CreateConflict extends BasePage {
 //			assertCurrentPage(ALERT_2);
 	}
 
+
+
+
+
 	public CreateConflict createConflict() {
 		logger.info("Let's click on create a conflict button");
 		clickElement(ADD_CONFLICT);
+		return this;
+	}
+
+	public CreateConflict shanta() {
+		logger.info("Verification of shanta");
+		assertCurrentPage(SHANTA);
+		assertCurrentPage(CALCULATE_FOR_ME);
+		assertCurrentPage(DISCOVER_4_WIN);
+		return this;
+	}
+
+	public CreateConflict discoverForMe() {
+		assertCurrentPage(DISCOVER_4_WIN);
+		waitAndClickElement(DISCOVER_4_WIN, 5);
+		assertCurrentPage(YES_PLEASE);
+		waitAndClickElement(NO_THANKS, 5);
+		return this;
+	}
+
+	public CreateConflict discoverForMeForChat() {
+		assertCurrentPage(DISCOVER_4_WIN);
+		waitAndClickElement(DISCOVER_4_WIN, 5);
+		assertCurrentPage(YES_PLEASE);
+		waitAndClickElement(YES_PLEASE, 5);
+		return this;
+	}
+
+	public CreateConflict calculateForMe() {
+		assertCurrentPage(CALCULATE_FOR_ME);
+		waitAndClickElement(CALCULATE_FOR_ME, 5);
+		//assertCurrentPage(YES_PLEASE);
+		waitAndClickElement(NO_THANKS, 5);
 		return this;
 	}
 
@@ -80,6 +123,16 @@ public class CreateConflict extends BasePage {
 		getKeyBoardAndHide(myValue);
 		//setValueswithHideKeyboard(ENTER_VALUE, myValue);
 		Harmony.put("create_conflict",myValue);
+		return this;
+	}
+
+	public CreateConflict enterConflictValueQPCC() throws InterruptedException {
+		String myValue = testUtils.randomValues();
+		logger.info("My conflict is" + " " + myValue);
+		driver.switchTo().alert();
+		getKeyBoardAndHide(myValue);
+		//setValueswithHideKeyboard(ENTER_VALUE, myValue);
+		Harmony.put("create_conflict_QPCC",myValue);
 		return this;
 	}
 
@@ -121,6 +174,16 @@ public class CreateConflict extends BasePage {
 		//Assert.assertTrue(Harmony.contains(match), "Both Values matched" );
 		return this;
 	}
+
+	public CreateConflict verifyCreatedConflictQPCC() {
+		logger.info("Let's verify created Conflict");
+		String match = getText(VERIFY_CONFLICT);
+		logger.info("value of match is " +match);
+		Assert.assertTrue(Harmony.get("create_conflict_QPCC").matches(match), "Created Conflict values matched with HashTable");
+		//Assert.assertTrue(Harmony.contains(match), "Both Values matched" );
+		return this;
+	}
+
 
 	public CreateConflict moveToConflict() {
 		logger.info("Let's move from conflict library to My Conflict");

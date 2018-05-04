@@ -42,7 +42,7 @@ public class DeleteConflictPage extends BasePage {
 		logger.info("Verify deleted conflict");
 		syncAction(3000);
 		logger.info(getText(VERIFY_CONFLICT));
-		Assert.assertTrue(Harmony.contains(getText(VERIFY_CONFLICT).toString()));
+		Assert.assertFalse(Harmony.contains(getText(VERIFY_CONFLICT).toString()));
 		return this;
 	}
 
